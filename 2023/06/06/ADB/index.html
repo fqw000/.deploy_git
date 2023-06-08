@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="ADB 操作命令详解及用法大全 下载解压 adb android-platform-tools 配置环境变量：   zsh .zshrc home path    常用命令   cmd usage cmd usage cmd usage    adb version 查看版本号 adb start-server 启动 adb 服务 adb kill-server 终止 adb 服务   adb d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ADB">
+<meta property="og:url" content="https://wangqifei.eu.org/2023/06/06/ADB/index.html">
+<meta property="og:site_name" content="Wangqifei">
+<meta property="og:description" content="ADB 操作命令详解及用法大全 下载解压 adb android-platform-tools 配置环境变量：   zsh .zshrc home path    常用命令   cmd usage cmd usage cmd usage    adb version 查看版本号 adb start-server 启动 adb 服务 adb kill-server 终止 adb 服务   adb d">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-06T08:33:17.000Z">
+<meta property="article:modified_time" content="2023-06-06T09:35:42.712Z">
+<meta property="article:author" content="Wangqifei">
+<meta property="article:tag" content="DEV">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>ADB</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Wangqifei" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/06/06/Git%E5%AE%89%E8%A3%85%E5%90%8E%E5%8F%B3%E9%94%AE%E6%B2%A1%E6%9C%89git-bash%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/06/ADB/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/06/ADB/&text=ADB"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/06/ADB/&is_video=false&description=ADB"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ADB&body=Check out this article: https://wangqifei.eu.org/2023/06/06/ADB/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/06/ADB/&name=ADB&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/06/ADB/&t=ADB"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">配置环境变量：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">应用管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">网络管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E9%94%AE"><span class="toc-number">6.</span> <span class="toc-text">按键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%8F%8A%E5%85%B6%E4%BB%96"><span class="toc-number">7.</span> <span class="toc-text">日志及其他</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        ADB
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Wangqifei</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-06T08:33:17.000Z" class="dt-published" itemprop="datePublished">2023-06-06</time>
+        
+        (Updated: <time datetime="2023-06-06T09:35:42.712Z" class="dt-updated" itemprop="dateModified">2023-06-06</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/DEV/" rel="tag">DEV</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903645289398280#heading-15">ADB 操作命令详解及用法大全</a></p>
+<p>下载解压 adb android-platform-tools</p>
+<h2 id="配置环境变量："><a href="#配置环境变量：" class="headerlink" title="配置环境变量："></a>配置环境变量：</h2><table>
+<thead>
+<tr>
+<th>zsh</th>
+<th>.zshrc</th>
+<th>home path</th>
+</tr>
+</thead>
+</table>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
+<thead>
+<tr>
+<th>cmd</th>
+<th>usage</th>
+<th>cmd</th>
+<th>usage</th>
+<th>cmd</th>
+<th>usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>adb version</td>
+<td>查看版本号</td>
+<td>adb start-server</td>
+<td>启动 adb 服务</td>
+<td>adb kill-server</td>
+<td>终止 adb 服务</td>
+</tr>
+<tr>
+<td>adb devices</td>
+<td>连接的设备</td>
+<td>adb root</td>
+<td>以 root 身份使用 adb</td>
+<td>adb -p <port> start-server</td>
+<td>指定 adb 端口，默认 5037</td>
+</tr>
+<tr>
+<td>adb connect:port</td>
+<td>通过制定端口连接制定 ip 的机器</td>
+<td>adb disconnect</td>
+<td>断开链接</td>
+<td>adb usb</td>
+<td>以 usb 模式重新启动 adb</td>
+</tr>
+</tbody></table>
+<h2 id="应用管理"><a href="#应用管理" class="headerlink" title="应用管理"></a>应用管理</h2><p>查看</p>
+<p>adb shell pm list packages [options]</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-f</td>
+<td>显示应用关联的 apk 文件</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>显示 disable 的应用</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>显示 enabled 的应用</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>显示系统应用</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>显示第三方应用</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>显示应用的 installer</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>包含已卸载应用</td>
+</tr>
+<tr>
+<td><filter></td>
+<td>包含制定字符的应用</td>
+</tr>
+<tr>
+<td>无</td>
+<td>所有应用</td>
+</tr>
+</tbody></table>
+<p>安装</p>
+<p>adb install <package-name></p>
+<p>安装文件需要放置在当前目录下</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-l</td>
+<td>安装到保护目录&#x2F;mnt&#x2F;asec</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>允许覆盖安装</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>允许安装 androidManifest.xml 里的 application 指定 android：testOnly&#x3D;ture 的应用</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>将应用安装到 sdcard</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>允许降级覆盖安装</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>授予运行时到权限</td>
+</tr>
+</tbody></table>
+<p>卸载</p>
+<p>adb uninstall [-k] [package-name]</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-k</td>
+<td>卸载时保留数据和缓存目录</td>
+</tr>
+</tbody></table>
+<p>清除应用数据和缓存</p>
+<p>adb shell pm clear <package-name></p>
+<p>查看应用安装路径</p>
+<p>adb shell pm path <package-name></p>
+<p>&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;查看前台 activity</p>
+<p>adb shell dumpsys activity activities | grep moucusedActivity</p>
+<p>查看正在运行的 services</p>
+<p>adb shell dumpsys activity services <package-name></p>
+<p>adb shell dumpsys activity services</p>
+<p>查看应用详细信息</p>
+<p>adb shell dumpsys package <package-name></p>
+<p>启动应用</p>
+<p>adb shell am start <package-name></p>
+<p>adb shell am start <package-name>&#x2F;.Activity(需要启动的 activity)</p>
+<p>交互</p>
+<p>强制停止应用</p>
+<p>adb shell am force-stop <package-name></p>
+<p>收紧内存</p>
+<p>adb shell am send-trim-memory <pid> <level></p>
+<p>pid:进程 id</p>
+<p>level：HIDDEN RUNNING_MODERATE BACKGROUND RUNING_LOW MODERATE RUNNING_CRITICAL COMPLETE</p>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><p>从设备下载文件到本地</p>
+<p>adb pull <remote> [local]</p>
+<p>remote：模拟器&#x2F;设备的文件路径</p>
+<p>local：本地路径，留空默认即当前目录</p>
+<p>将本地文件推送到设备</p>
+<p>adb push <local> [remote]</p>
+<p>列出制定目录的内容</p>
+<p>adb shell ls [option] <directory></p>
+<p>directory:制定目录，省略即当前</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无</td>
+<td>所有文件和目录</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>所有文件包括隐藏</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>所有文件和索引编号</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>所有文件和文件大小</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>所有文件和 uid gid</td>
+</tr>
+<tr>
+<td>-R</td>
+<td>所有子目录的文件</td>
+</tr>
+</tbody></table>
+<p>切换到目录</p>
+<p>adb shell cd <directory></p>
+<p>删除</p>
+<p>adb shell rm [iptions] &lt;file&#x2F;directory&gt;</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>强制删除，不提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>强制删除制定目录下的所有内容</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>删除指定目录，等同于 rmdir</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>交互删除，删除前提示</td>
+</tr>
+</tbody></table>
+<p>创建目录</p>
+<p>adb shell mkdir [options] <directory-name></p>
+<p>同样类型的 adb shel 命令有</p>
+<p>pwd</p>
+<p>cp</p>
+<p>mv</p>
+<h2 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h2><p>网络信息查看</p>
+<p>adb shell netstat</p>
+<p>将网络信息输出到制定文件</p>
+<p>adb shell netstat&gt;<file-path></p>
+<p>ping</p>
+<p>adb shell ping destination</p>
+<p>查看 ip</p>
+<p>adb shell ifconfig | grep Mask</p>
+<p>如果不行，使用一下命令：</p>
+<p>adb shell netcfg</p>
+<h2 id="按键"><a href="#按键" class="headerlink" title="按键"></a>按键</h2><p>菜单</p>
+<p>adb shell input keyevent 82</p>
+<p>home 键</p>
+<p>adb shell input keyevent 3</p>
+<p>返回键</p>
+<p>adb shell input keyevent 4</p>
+<p>静音</p>
+<p>adb shell input keyevent 164</p>
+<p>亮屏</p>
+<p>adb shell input keyevent 224</p>
+<p>关屏</p>
+<p>adb shell input keyevent 223</p>
+<p>滑动解锁</p>
+<p>adb shell input swipe 300 1000 300 500</p>
+<p>300 1000 300 500 代表起点 x 坐标 起点 y 坐标 结束 x 坐标 结束 y 坐标</p>
+<p>焦点处于文本框时输入文本</p>
+<p>adb shell input text &lt;输入内容&gt;</p>
+<p>（英文输入法下可输入英文，中文异常）</p>
+<h2 id="日志及其他"><a href="#日志及其他" class="headerlink" title="日志及其他"></a>日志及其他</h2><p>清空日志</p>
+<p>adb logcat -c</p>
+<p>显示日志在控制台</p>
+<p>adb logcat -d</p>
+<p>查看电池状况</p>
+<p>adb shell dumpsys battery</p>
+<p>查看分辨率</p>
+<p>adb shell wm size</p>
+<p>查看屏幕密度</p>
+<p>adb shell wm density</p>
+<p>查看屏幕参数</p>
+<p>adb shell dumpsys window displays</p>
+<p>查看设备 android id</p>
+<p>adb shell settings get secure android_id</p>
+<p>查看 android 系统版本</p>
+<p>adb shell getprop ro.build.version.release</p>
+<p>查看 mac 地址</p>
+<p>adb shell cat &#x2F;sys&#x2F;class&#x2F;net&#x2F;wan0&#x2F;address</p>
+<p>截图</p>
+<p>adb exec-out screencap -p &gt; sc.png</p>
+<p>重启</p>
+<p>adb reboot</p>
+<p>查看当前 activity</p>
+<p>adb shell dumpsys activity activities | grep mResumedActivity</p>
+<p>》〉》〉华为后台调用 activity</p>
+<p>om.huawei.android.launcher&#x2F;.quickstep.RecentsActivit</p>
+<p>adb 调起多任务管理</p>
+<p>adb shell am start -n com.huawei.android.launcher&#x2F;.quickstep.RecentsActivity</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">配置环境变量：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">应用管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">网络管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E9%94%AE"><span class="toc-number">6.</span> <span class="toc-text">按键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%8F%8A%E5%85%B6%E4%BB%96"><span class="toc-number">7.</span> <span class="toc-text">日志及其他</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/06/ADB/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/06/ADB/&text=ADB"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/06/ADB/&is_video=false&description=ADB"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ADB&body=Check out this article: https://wangqifei.eu.org/2023/06/06/ADB/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/06/ADB/&title=ADB"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/06/ADB/&name=ADB&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/06/ADB/&t=ADB"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    Wangqifei
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

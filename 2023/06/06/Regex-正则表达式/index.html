@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="RegularExpressionRegux &#x2F; Reguxp 语法构成普通字符涵盖：大小写字母、数字、标点、特殊符号    打印字符 描述    abc 匹配所有字符中的 abc。注意与[abc]的区别   [abc] 字符簇。匹配所有字符中单个的 a、b 或 c。[a | b | c]   [a-z] 字符簇。匹配所有字符中的任一小写字母。   [A-Z] 字符簇。 匹配所有字符中的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regex 正则表达式">
+<meta property="og:url" content="https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Wangqifei">
+<meta property="og:description" content="RegularExpressionRegux &#x2F; Reguxp 语法构成普通字符涵盖：大小写字母、数字、标点、特殊符号    打印字符 描述    abc 匹配所有字符中的 abc。注意与[abc]的区别   [abc] 字符簇。匹配所有字符中单个的 a、b 或 c。[a | b | c]   [a-z] 字符簇。匹配所有字符中的任一小写字母。   [A-Z] 字符簇。 匹配所有字符中的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e06eed0-cf1c-44e7-a0bc-aee4e33945f9/Untitled.png">
+<meta property="article:published_time" content="2023-06-06T08:16:34.000Z">
+<meta property="article:modified_time" content="2023-06-06T08:32:22.900Z">
+<meta property="article:author" content="Wangqifei">
+<meta property="article:tag" content="DEV">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e06eed0-cf1c-44e7-a0bc-aee4e33945f9/Untitled.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Regex 正则表达式</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Wangqifei" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/06/06/ADB/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/06/04/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E9%A1%B5%E9%9D%A2/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&text=Regex 正则表达式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&is_video=false&description=Regex 正则表达式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Regex 正则表达式&body=Check out this article: https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&name=Regex 正则表达式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&t=Regex 正则表达式"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RegularExpression"><span class="toc-number">1.</span> <span class="toc-text">RegularExpression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E6%9E%84%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">语法构成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%AD%97%E7%AC%A6"><span class="toc-number">2.1.</span> <span class="toc-text">普通字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6"><span class="toc-number">2.2.</span> <span class="toc-text">非打印字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-number">2.3.</span> <span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-number">2.4.</span> <span class="toc-text">限定符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E7%AC%A6-%E9%94%9A%E7%82%B9"><span class="toc-number">2.5.</span> <span class="toc-text">定位符(锚点)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">2.6.</span> <span class="toc-text">组与引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%B6%E5%AE%BD%E6%96%AD%E8%A8%80"><span class="toc-number">2.7.</span> <span class="toc-text">零宽断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flags-%E6%A0%87%E5%BF%97"><span class="toc-number">2.8.</span> <span class="toc-text">flags 标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">2.9.</span> <span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed"><span class="toc-number">3.</span> <span class="toc-text">sed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Per"><span class="toc-number">4.</span> <span class="toc-text">Per</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Regex 正则表达式
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Wangqifei</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-06T08:16:34.000Z" class="dt-published" itemprop="datePublished">2023-06-06</time>
+        
+        (Updated: <time datetime="2023-06-06T08:32:22.900Z" class="dt-updated" itemprop="dateModified">2023-06-06</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/DEV/" rel="tag">DEV</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="RegularExpression"><a href="#RegularExpression" class="headerlink" title="RegularExpression"></a>RegularExpression</h2><p>Regux &#x2F; Reguxp</p>
+<h2 id="语法构成"><a href="#语法构成" class="headerlink" title="语法构成"></a>语法构成</h2><h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>涵盖：大小写字母、数字、标点、特殊符号</p>
+<table>
+<thead>
+<tr>
+<th>打印字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abc</td>
+<td>匹配所有字符中的 abc。注意与[abc]的区别</td>
+</tr>
+<tr>
+<td>[abc]</td>
+<td>字符簇。匹配所有字符中单个的 a、b 或 c。[a | b | c]</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>字符簇。匹配所有字符中的任一小写字母。</td>
+</tr>
+<tr>
+<td>[A-Z]</td>
+<td>字符簇。 匹配所有字符中的任一大写字母。</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>字符簇。 匹配所有字符中的任一数字。</td>
+</tr>
+<tr>
+<td>[^abc]</td>
+<td>字符簇。匹配所有字符中非的 a、b 或 c。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除换行(\n、\r)之外的任一字符。[^\n\r]</td>
+</tr>
+<tr>
+<td>[\s]</td>
+<td>匹配所有的空白字符包括换行符、空格、制表符、换页符等。</td>
+</tr>
+<tr>
+<td>[\S]</td>
+<td>匹配所有的非空白字符不包括换行符、制表符、换页符。[^\f\n\r\t\v]</td>
+</tr>
+<tr>
+<td>[\w]</td>
+<td>匹配任一数字、字母、下划线 。[0-9a-zA-Z_]</td>
+</tr>
+<tr>
+<td>[\W]</td>
+<td>匹配任一非单词字符。[^0-9a-zA-Z_]</td>
+</tr>
+<tr>
+<td>[\d]</td>
+<td>匹配任一数字字符。[0-9]</td>
+</tr>
+<tr>
+<td>[\D]</td>
+<td>匹配任一非数字字符，包括字母、空格、下划线。[^0-9]</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h3><table>
+<thead>
+<tr>
+<th>非打印字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\cx</td>
+<td>匹配为 x 字母的控制字符。x 可以是任一字母。</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>匹配一个换页符。\x0c 、\cL</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>匹配一个换行符。</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>匹配一个回车符。</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>匹配一个制表符。</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>匹配一个垂直制表符。</td>
+</tr>
+<tr>
+<td>\num</td>
+<td>匹配正整数 num，对所获取的匹配的引用。</td>
+</tr>
+</tbody></table>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>匹配整个字符串的开始位置。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配整个字符串的结束位置。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前一个子表达式零次及以上。{0,}</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前一个子表达式一次及以上。{1,}</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前一个子表达式零次到一次。{0,1}</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除换行符之外的任一字符。</td>
+</tr>
+<tr>
+<td>\</td>
+<td>转义字符。将下一个字符标记为特殊字符、原意字符或向后引用，或八进制转义字符。</td>
+</tr>
+<tr>
+<td>()</td>
+<td>标记一个组（子表达式）。定义操作符的范围和有限级。选择项必须要放置在()中。</td>
+</tr>
+<tr>
+<td>[</td>
+<td>标记一个中括号表达式的开始。</td>
+</tr>
+<tr>
+<td>]</td>
+<td>标记一个中括号表达式的结束。</td>
+</tr>
+<tr>
+<td>{</td>
+<td>标记限定符表达式开始。</td>
+</tr>
+<tr>
+<td>}</td>
+<td>标记限定符表达式结束。</td>
+</tr>
+<tr>
+<td>|</td>
+<td>或。匹配前后两项中的任一个。优先级最低。</td>
+</tr>
+</tbody></table>
+<h3 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h3><p>表述指定的<code>正则组件</code>必须出现的次数才符合匹配</p>
+<table>
+<thead>
+<tr>
+<th>限定符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>匹配前一个子表达式零次及以上。{0,}</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前一个子表达式一次及以上。{1,}</td>
+</tr>
+<tr>
+<td>？</td>
+<td>匹配前一个子表达式零次到一次。{0,1}。跟在任一其他限定符后面时，表示匹配模式是非贪婪的，即尽可能少的匹配描述的字符串。</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>匹配前一个子表达式 n 次。</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>匹配前一个子表达式 n 次及以上。</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配前一个子表达式 n 次到 m 次。</td>
+</tr>
+</tbody></table>
+<h3 id="定位符-锚点"><a href="#定位符-锚点" class="headerlink" title="定位符(锚点)"></a>定位符(锚点)</h3><table>
+<thead>
+<tr>
+<th>定位符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>匹配字符串的开始位置。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结束位置。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词的边界(wordboundary，A word boundary is a zero-width test between two characters)。匹配字符与空格之间的位置。即匹配前一个子表达式且在单词的收尾或开头(取决于\b 放置的位置)</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词的边界。匹配单词间字符与字符之间的边界。即匹配前一个子表达式且前一个表达式不能在字符串的收尾或开头(取决于\B 放置的位置)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="组与引用"><a href="#组与引用" class="headerlink" title="组与引用"></a>组与引用</h3><p>（）表示捕获分组</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>()</td>
+<td>捕获分组，把每个分组里匹配的值保存起来，多个可通过用 n 表示组的序号来查看</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="零宽断言"><a href="#零宽断言" class="headerlink" title="零宽断言"></a>零宽断言</h3><table>
+<thead>
+<tr>
+<th>非捕获元</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(?:pattern)</td>
+<td>非捕获组，创建无法引用的分组。</td>
+</tr>
+<tr>
+<td>(?&#x3D;pattern)</td>
+<td>正向预查，在任何开始匹配圆括号内表达式的位置查询。匹配的元素后方紧跟着需要有能匹配括号内表达式匹配到的元素。</td>
+</tr>
+<tr>
+<td>(?!pattern)</td>
+<td>正向否定预查。在任何不匹配该表达式的位置查询。匹配到的元素后方紧跟着的不能含有括号内表达式匹配的元素。</td>
+</tr>
+<tr>
+<td>(?&lt;&#x3D;pattern)</td>
+<td>反向肯定预查。匹配元素的前一个元素是括号表达式陪陪的元素。</td>
+</tr>
+<tr>
+<td>(?&lt;!&#x3D;pattern)</td>
+<td>反向否定预查。匹配元素的前一个元素不能是括号表达式陪陪的元素。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r(?&#x3D;e)</td>
+<td>匹配单词中后面有 e 的 r</td>
+</tr>
+<tr>
+<td>r(?!e)</td>
+<td>匹配单词中后面没有 e 的 r</td>
+</tr>
+<tr>
+<td>(?&lt;&#x3D;e)r</td>
+<td>匹配前面有 e 的 r</td>
+</tr>
+<tr>
+<td>(?&lt;!&#x3D;e)r</td>
+<td>匹配前面没有 e 的 r</td>
+</tr>
+</tbody></table>
+<h3 id="flags-标志"><a href="#flags-标志" class="headerlink" title="flags 标志"></a>flags 标志</h3><p>flags 放置在 pattern 的后面，可以是多个 flags 同时使用。</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>忽略大小写。</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全局查找，确保表达式不会在第一个匹配项时停止。</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行查找，不启用^和$只匹配整个字符串的开始和结束，而不会单独匹配每一行。</td>
+</tr>
+<tr>
+<td>s</td>
+<td>默认.匹配的是除换行\n 以外的任一字符，加上 s 后.可以匹配包括换行在內的任一字符。</td>
+</tr>
+</tbody></table>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最高</td>
+<td>\</td>
+</tr>
+<tr>
+<td>高</td>
+<td>()、(?:)、(?&#x3D;)、[]</td>
+</tr>
+<tr>
+<td>中</td>
+<td>*、+、?、{n}、{n,}、{n,m}</td>
+</tr>
+<tr>
+<td>低</td>
+<td>^、$、中介字符</td>
+</tr>
+<tr>
+<td>次低</td>
+<td>串联。相邻的字符连接在一起</td>
+</tr>
+<tr>
+<td>最低</td>
+<td>｜</td>
+</tr>
+</tbody></table>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e06eed0-cf1c-44e7-a0bc-aee4e33945f9/Untitled.png" alt="正则表达的解析"></p>
+<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><p>shell 的 sed 不支持、\d、\D、零宽断言，且 sed 下的正则表达没有懒惰模式，都是贪婪模式。</p>
+<h2 id="Per"><a href="#Per" class="headerlink" title="Per"></a>Per</h2><p>可更好的替代 sed 使用。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RegularExpression"><span class="toc-number">1.</span> <span class="toc-text">RegularExpression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E6%9E%84%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">语法构成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%AD%97%E7%AC%A6"><span class="toc-number">2.1.</span> <span class="toc-text">普通字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6"><span class="toc-number">2.2.</span> <span class="toc-text">非打印字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-number">2.3.</span> <span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-number">2.4.</span> <span class="toc-text">限定符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E7%AC%A6-%E9%94%9A%E7%82%B9"><span class="toc-number">2.5.</span> <span class="toc-text">定位符(锚点)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">2.6.</span> <span class="toc-text">组与引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%B6%E5%AE%BD%E6%96%AD%E8%A8%80"><span class="toc-number">2.7.</span> <span class="toc-text">零宽断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flags-%E6%A0%87%E5%BF%97"><span class="toc-number">2.8.</span> <span class="toc-text">flags 标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">2.9.</span> <span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed"><span class="toc-number">3.</span> <span class="toc-text">sed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Per"><span class="toc-number">4.</span> <span class="toc-text">Per</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&text=Regex 正则表达式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&is_video=false&description=Regex 正则表达式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Regex 正则表达式&body=Check out this article: https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=Regex 正则表达式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&name=Regex 正则表达式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&t=Regex 正则表达式"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    Wangqifei
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

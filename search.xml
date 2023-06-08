@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>SpotifyPremium实现</title>
+      <link href="/2023/06/06/SpotifyPremium%E5%AE%9E%E7%8E%B0/"/>
+      <url>/2023/06/06/SpotifyPremium%E5%AE%9E%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="主要实现以下功能："><a href="#主要实现以下功能：" class="headerlink" title="主要实现以下功能："></a>主要实现以下功能：</h2><ol><li>去广告</li><li>去除 14 天检测</li><li><a href="/Spotify%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E5%AE%9E%E7%8E%B0.md">歌词翻译</a>（新版本虽已经引入，但效果欠佳）</li></ol><h2 id="实现方案："><a href="#实现方案：" class="headerlink" title="实现方案："></a><strong>实现方案：</strong></h2><p><strong>A:Spotify Premium</strong></p><p>B:Sprotify 脚本</p><p>Surge&#x2F;Loon&#x2F;Quantumult X&#x2F;ShadowRocketS 等网络调试工具+脚本文件+百度翻译 api</p><p><a href="https://apps.apple.com/us/app/loon/id1373567447">Loon</a> | <a href="https://github.com/fqw000/tools/blob/main/script/spotifypremium.js">spotifypremium 脚本</a> | <a href="https://github.com/fqw000/tools/blob/main/script/spotifylyric.js">spotifylyric 脚本</a></p><h2 id="效果："><a href="#效果：" class="headerlink" title="效果："></a><strong>效果</strong>：</h2><ul><li><p>无广告、可保持更新、自由切歌、不用再考虑境外支付问题。</p></li><li><p>我是账号归属和日常使用网络环境均为同区，但 Spotify 的所有流量走的都是国内直连，几乎没出现过 14 天的问题。</p></li><li><p>非中文歌词均可逐行翻译成中文。</p></li></ul><h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a><strong>注意事项：</strong></h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Spotify </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Spotify歌词翻译实现</title>
+      <link href="/2023/06/06/Spotify%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E5%AE%9E%E7%8E%B0/"/>
+      <url>/2023/06/06/Spotify%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E5%AE%9E%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="实现步骤："><a href="#实现步骤：" class="headerlink" title="实现步骤："></a>实现步骤：</h2><ul><li>·<strong>注册百度翻译个人开发者，然后申请百度翻译的 appid 和 key。接下来要在脚本文件里使用</strong>。<br>建议申请高级版，标准版可能不够用。</li><li><strong>使用网络工具配置 mitm 域名：</strong><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">hostname</span> <span class="string">=spclient.wg.spotify.com</span></span><br></pre></td></tr></table></figure></li><li>使用网络工具配置脚本文件（注意将其中的 appid 和 securityKey 替换为自己的），不同软件配置不同参考以下内容：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http-response</span> <span class="string">^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/</span> <span class="string">script-path=[https://raw.githubusercontent.com/fqw000/tools/main/s](https://raw.githubusercontent.com/fqw000/tools/main/rule/liby.list)cript/spotifylyric.js,</span> <span class="string">requires-body=true,</span> <span class="string">binary-body-mode=true,</span> <span class="string">timeout=10,</span> <span class="string">tag=Spotify歌词翻译,</span> <span class="string">argument=appid=xx&amp;securityKey=xxx</span></span><br></pre></td></tr></table></figure></li></ul><p><strong>开启 mitm 和脚本即可正常使用</strong></p><p>#脚本来源 app2smile</p><h2 id="Spotify-歌词翻译使用百度翻译-api-的几点注意事项"><a href="#Spotify-歌词翻译使用百度翻译-api-的几点注意事项" class="headerlink" title="Spotify 歌词翻译使用百度翻译 api 的几点注意事项"></a>Spotify 歌词翻译使用百度翻译 api 的几点注意事项</h2><p>这两天发了 spotify 歌词翻译以后，部分网友私信协助其进行了配置，因为私信较多，可能在私信的过程中部分网友收到的代码里包含了我的百度翻译 api。今天发现欠费了……所以想给大家一些提示：</p><ul><li>流量<blockquote><p>通用翻译 API 标准版免费调用量调整为 5 万字符&#x2F;月，高级版免费调用量调整为 100 万字符&#x2F;月。<br>请选择 高级版，标准版可能不够用。<br>高级版比标准版相比要求多个了个人认证，需要身份证和手机号。</p></blockquote></li><li>费用<br>百度翻译是可以欠费的！采用的是次日结算的方式，欠费以后服务就被停用了，脚本无法使用翻译功能会提醒你检查 api 和 key 的配置。</li><li>必要设置<br>可以开通流量提醒、费用提醒。支持设置手机号和邮箱。</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Spotify </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Git安装后右键没有git bash的解决方案</title>
+      <link href="/2023/06/06/Git%E5%AE%89%E8%A3%85%E5%90%8E%E5%8F%B3%E9%94%AE%E6%B2%A1%E6%9C%89git-bash%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+      <url>/2023/06/06/Git%E5%AE%89%E8%A3%85%E5%90%8E%E5%8F%B3%E9%94%AE%E6%B2%A1%E6%9C%89git-bash%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><blockquote><p>实现原理是使用注册表将 git bash 写入右键 1.将以下内容写入新建的.txt 文件。 2.修改.txt 为.reg。 3.双击点击运行。</p></blockquote><ul><li>文件内容：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">; Open files</span><br><span class="line">; Default Git-Bash Location C:\Program Files\Git\git-bash.exe</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Open Git Bash]</span><br><span class="line">@=&quot;Open Git Bash&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Program Files\\Git\\git-bash.exe&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Open Git Bash\command]</span><br><span class="line">@=&quot;\&quot;C:\\Program Files\\Git\\git-bash.exe\&quot; \&quot;--cd=%1\&quot;&quot;</span><br><span class="line"></span><br><span class="line">; This will make it appear when you right click ON a folder</span><br><span class="line">; The &quot;Icon&quot; line can be removed if you don&#x27;t want the icon to appear</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\bash]</span><br><span class="line">@=&quot;Open Git Bash&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Program Files\\Git\\git-bash.exe&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\bash\command]</span><br><span class="line">@=&quot;\&quot;C:\\Program Files\\Git\\git-bash.exe\&quot; \&quot;--cd=%1\&quot;&quot;</span><br><span class="line"></span><br><span class="line">; This will make it appear when you right click INSIDE a folder</span><br><span class="line">; The &quot;Icon&quot; line can be removed if you don&#x27;t want the icon to appear</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\bash]</span><br><span class="line">@=&quot;Open Git Bash&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Program Files\\Git\\git-bash.exe&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\bash\command]</span><br><span class="line">@=&quot;\&quot;C:\\Program Files\\Git\\git-bash.exe\&quot; \&quot;--cd=%v.\&quot;&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> DEV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ADB</title>
+      <link href="/2023/06/06/ADB/"/>
+      <url>/2023/06/06/ADB/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://juejin.cn/post/6844903645289398280#heading-15">ADB 操作命令详解及用法大全</a></p><p>下载解压 adb android-platform-tools</p><h2 id="配置环境变量："><a href="#配置环境变量：" class="headerlink" title="配置环境变量："></a>配置环境变量：</h2><table><thead><tr><th>zsh</th><th>.zshrc</th><th>home path</th></tr></thead></table><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table><thead><tr><th>cmd</th><th>usage</th><th>cmd</th><th>usage</th><th>cmd</th><th>usage</th></tr></thead><tbody><tr><td>adb version</td><td>查看版本号</td><td>adb start-server</td><td>启动 adb 服务</td><td>adb kill-server</td><td>终止 adb 服务</td></tr><tr><td>adb devices</td><td>连接的设备</td><td>adb root</td><td>以 root 身份使用 adb</td><td>adb -p <port> start-server</td><td>指定 adb 端口，默认 5037</td></tr><tr><td>adb connect:port</td><td>通过制定端口连接制定 ip 的机器</td><td>adb disconnect</td><td>断开链接</td><td>adb usb</td><td>以 usb 模式重新启动 adb</td></tr></tbody></table><h2 id="应用管理"><a href="#应用管理" class="headerlink" title="应用管理"></a>应用管理</h2><p>查看</p><p>adb shell pm list packages [options]</p><table><thead><tr><th>参数</th><th>显示</th></tr></thead><tbody><tr><td>-f</td><td>显示应用关联的 apk 文件</td></tr><tr><td>-d</td><td>显示 disable 的应用</td></tr><tr><td>-e</td><td>显示 enabled 的应用</td></tr><tr><td>-s</td><td>显示系统应用</td></tr><tr><td>-3</td><td>显示第三方应用</td></tr><tr><td>-i</td><td>显示应用的 installer</td></tr><tr><td>-u</td><td>包含已卸载应用</td></tr><tr><td><filter></td><td>包含制定字符的应用</td></tr><tr><td>无</td><td>所有应用</td></tr></tbody></table><p>安装</p><p>adb install <package-name></p><p>安装文件需要放置在当前目录下</p><table><thead><tr><th>参数</th><th>意义</th></tr></thead><tbody><tr><td>-l</td><td>安装到保护目录&#x2F;mnt&#x2F;asec</td></tr><tr><td>-r</td><td>允许覆盖安装</td></tr><tr><td>-t</td><td>允许安装 androidManifest.xml 里的 application 指定 android：testOnly&#x3D;ture 的应用</td></tr><tr><td>-s</td><td>将应用安装到 sdcard</td></tr><tr><td>-d</td><td>允许降级覆盖安装</td></tr><tr><td>-g</td><td>授予运行时到权限</td></tr></tbody></table><p>卸载</p><p>adb uninstall [-k] [package-name]</p><table><thead><tr><th>参数</th><th>意义</th></tr></thead><tbody><tr><td>-k</td><td>卸载时保留数据和缓存目录</td></tr></tbody></table><p>清除应用数据和缓存</p><p>adb shell pm clear <package-name></p><p>查看应用安装路径</p><p>adb shell pm path <package-name></p><p>&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;查看前台 activity</p><p>adb shell dumpsys activity activities | grep moucusedActivity</p><p>查看正在运行的 services</p><p>adb shell dumpsys activity services <package-name></p><p>adb shell dumpsys activity services</p><p>查看应用详细信息</p><p>adb shell dumpsys package <package-name></p><p>启动应用</p><p>adb shell am start <package-name></p><p>adb shell am start <package-name>&#x2F;.Activity(需要启动的 activity)</p><p>交互</p><p>强制停止应用</p><p>adb shell am force-stop <package-name></p><p>收紧内存</p><p>adb shell am send-trim-memory <pid> <level></p><p>pid:进程 id</p><p>level：HIDDEN RUNNING_MODERATE BACKGROUND RUNING_LOW MODERATE RUNNING_CRITICAL COMPLETE</p><h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><p>从设备下载文件到本地</p><p>adb pull <remote> [local]</p><p>remote：模拟器&#x2F;设备的文件路径</p><p>local：本地路径，留空默认即当前目录</p><p>将本地文件推送到设备</p><p>adb push <local> [remote]</p><p>列出制定目录的内容</p><p>adb shell ls [option] <directory></p><p>directory:制定目录，省略即当前</p><table><thead><tr><th>参数</th><th>意义</th></tr></thead><tbody><tr><td>无</td><td>所有文件和目录</td></tr><tr><td>-a</td><td>所有文件包括隐藏</td></tr><tr><td>-i</td><td>所有文件和索引编号</td></tr><tr><td>-s</td><td>所有文件和文件大小</td></tr><tr><td>-n</td><td>所有文件和 uid gid</td></tr><tr><td>-R</td><td>所有子目录的文件</td></tr></tbody></table><p>切换到目录</p><p>adb shell cd <directory></p><p>删除</p><p>adb shell rm [iptions] &lt;file&#x2F;directory&gt;</p><table><thead><tr><th>参数</th><th>意义</th></tr></thead><tbody><tr><td>无</td><td>删除文件</td></tr><tr><td>-f</td><td>强制删除，不提示</td></tr><tr><td>-r</td><td>强制删除制定目录下的所有内容</td></tr><tr><td>-d</td><td>删除指定目录，等同于 rmdir</td></tr><tr><td>-i</td><td>交互删除，删除前提示</td></tr></tbody></table><p>创建目录</p><p>adb shell mkdir [options] <directory-name></p><p>同样类型的 adb shel 命令有</p><p>pwd</p><p>cp</p><p>mv</p><h2 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h2><p>网络信息查看</p><p>adb shell netstat</p><p>将网络信息输出到制定文件</p><p>adb shell netstat&gt;<file-path></p><p>ping</p><p>adb shell ping destination</p><p>查看 ip</p><p>adb shell ifconfig | grep Mask</p><p>如果不行，使用一下命令：</p><p>adb shell netcfg</p><h2 id="按键"><a href="#按键" class="headerlink" title="按键"></a>按键</h2><p>菜单</p><p>adb shell input keyevent 82</p><p>home 键</p><p>adb shell input keyevent 3</p><p>返回键</p><p>adb shell input keyevent 4</p><p>静音</p><p>adb shell input keyevent 164</p><p>亮屏</p><p>adb shell input keyevent 224</p><p>关屏</p><p>adb shell input keyevent 223</p><p>滑动解锁</p><p>adb shell input swipe 300 1000 300 500</p><p>300 1000 300 500 代表起点 x 坐标 起点 y 坐标 结束 x 坐标 结束 y 坐标</p><p>焦点处于文本框时输入文本</p><p>adb shell input text &lt;输入内容&gt;</p><p>（英文输入法下可输入英文，中文异常）</p><h2 id="日志及其他"><a href="#日志及其他" class="headerlink" title="日志及其他"></a>日志及其他</h2><p>清空日志</p><p>adb logcat -c</p><p>显示日志在控制台</p><p>adb logcat -d</p><p>查看电池状况</p><p>adb shell dumpsys battery</p><p>查看分辨率</p><p>adb shell wm size</p><p>查看屏幕密度</p><p>adb shell wm density</p><p>查看屏幕参数</p><p>adb shell dumpsys window displays</p><p>查看设备 android id</p><p>adb shell settings get secure android_id</p><p>查看 android 系统版本</p><p>adb shell getprop ro.build.version.release</p><p>查看 mac 地址</p><p>adb shell cat &#x2F;sys&#x2F;class&#x2F;net&#x2F;wan0&#x2F;address</p><p>截图</p><p>adb exec-out screencap -p &gt; sc.png</p><p>重启</p><p>adb reboot</p><p>查看当前 activity</p><p>adb shell dumpsys activity activities | grep mResumedActivity</p><p>》〉》〉华为后台调用 activity</p><p>om.huawei.android.launcher&#x2F;.quickstep.RecentsActivit</p><p>adb 调起多任务管理</p><p>adb shell am start -n com.huawei.android.launcher&#x2F;.quickstep.RecentsActivity</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> DEV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Regex 正则表达式</title>
+      <link href="/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+      <url>/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<h2 id="RegularExpression"><a href="#RegularExpression" class="headerlink" title="RegularExpression"></a>RegularExpression</h2><p>Regux &#x2F; Reguxp</p><h2 id="语法构成"><a href="#语法构成" class="headerlink" title="语法构成"></a>语法构成</h2><h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>涵盖：大小写字母、数字、标点、特殊符号</p><table><thead><tr><th>打印字符</th><th>描述</th></tr></thead><tbody><tr><td>abc</td><td>匹配所有字符中的 abc。注意与[abc]的区别</td></tr><tr><td>[abc]</td><td>字符簇。匹配所有字符中单个的 a、b 或 c。[a | b | c]</td></tr><tr><td>[a-z]</td><td>字符簇。匹配所有字符中的任一小写字母。</td></tr><tr><td>[A-Z]</td><td>字符簇。 匹配所有字符中的任一大写字母。</td></tr><tr><td>[0-9]</td><td>字符簇。 匹配所有字符中的任一数字。</td></tr><tr><td>[^abc]</td><td>字符簇。匹配所有字符中非的 a、b 或 c。</td></tr><tr><td>.</td><td>匹配除换行(\n、\r)之外的任一字符。[^\n\r]</td></tr><tr><td>[\s]</td><td>匹配所有的空白字符包括换行符、空格、制表符、换页符等。</td></tr><tr><td>[\S]</td><td>匹配所有的非空白字符不包括换行符、制表符、换页符。[^\f\n\r\t\v]</td></tr><tr><td>[\w]</td><td>匹配任一数字、字母、下划线 。[0-9a-zA-Z_]</td></tr><tr><td>[\W]</td><td>匹配任一非单词字符。[^0-9a-zA-Z_]</td></tr><tr><td>[\d]</td><td>匹配任一数字字符。[0-9]</td></tr><tr><td>[\D]</td><td>匹配任一非数字字符，包括字母、空格、下划线。[^0-9]</td></tr><tr><td></td><td></td></tr></tbody></table><h3 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h3><table><thead><tr><th>非打印字符</th><th>描述</th></tr></thead><tbody><tr><td>\cx</td><td>匹配为 x 字母的控制字符。x 可以是任一字母。</td></tr><tr><td>\f</td><td>匹配一个换页符。\x0c 、\cL</td></tr><tr><td>\n</td><td>匹配一个换行符。</td></tr><tr><td>\r</td><td>匹配一个回车符。</td></tr><tr><td>\t</td><td>匹配一个制表符。</td></tr><tr><td>\v</td><td>匹配一个垂直制表符。</td></tr><tr><td>\num</td><td>匹配正整数 num，对所获取的匹配的引用。</td></tr></tbody></table><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table><thead><tr><th>元字符</th><th>描述</th></tr></thead><tbody><tr><td>^</td><td>匹配整个字符串的开始位置。</td></tr><tr><td>$</td><td>匹配整个字符串的结束位置。</td></tr><tr><td>*</td><td>匹配前一个子表达式零次及以上。{0,}</td></tr><tr><td>+</td><td>匹配前一个子表达式一次及以上。{1,}</td></tr><tr><td>?</td><td>匹配前一个子表达式零次到一次。{0,1}</td></tr><tr><td>.</td><td>匹配除换行符之外的任一字符。</td></tr><tr><td>\</td><td>转义字符。将下一个字符标记为特殊字符、原意字符或向后引用，或八进制转义字符。</td></tr><tr><td>()</td><td>标记一个组（子表达式）。定义操作符的范围和有限级。选择项必须要放置在()中。</td></tr><tr><td>[</td><td>标记一个中括号表达式的开始。</td></tr><tr><td>]</td><td>标记一个中括号表达式的结束。</td></tr><tr><td>{</td><td>标记限定符表达式开始。</td></tr><tr><td>}</td><td>标记限定符表达式结束。</td></tr><tr><td>|</td><td>或。匹配前后两项中的任一个。优先级最低。</td></tr></tbody></table><h3 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h3><p>表述指定的<code>正则组件</code>必须出现的次数才符合匹配</p><table><thead><tr><th>限定符</th><th>描述</th></tr></thead><tbody><tr><td>*</td><td>匹配前一个子表达式零次及以上。{0,}</td></tr><tr><td>+</td><td>匹配前一个子表达式一次及以上。{1,}</td></tr><tr><td>？</td><td>匹配前一个子表达式零次到一次。{0,1}。跟在任一其他限定符后面时，表示匹配模式是非贪婪的，即尽可能少的匹配描述的字符串。</td></tr><tr><td>{n}</td><td>匹配前一个子表达式 n 次。</td></tr><tr><td>{n,}</td><td>匹配前一个子表达式 n 次及以上。</td></tr><tr><td>{n,m}</td><td>匹配前一个子表达式 n 次到 m 次。</td></tr></tbody></table><h3 id="定位符-锚点"><a href="#定位符-锚点" class="headerlink" title="定位符(锚点)"></a>定位符(锚点)</h3><table><thead><tr><th>定位符</th><th>描述</th></tr></thead><tbody><tr><td>^</td><td>匹配字符串的开始位置。</td></tr><tr><td>$</td><td>匹配字符串的结束位置。</td></tr><tr><td>\b</td><td>匹配一个单词的边界(wordboundary，A word boundary is a zero-width test between two characters)。匹配字符与空格之间的位置。即匹配前一个子表达式且在单词的收尾或开头(取决于\b 放置的位置)</td></tr><tr><td>\B</td><td>匹配非单词的边界。匹配单词间字符与字符之间的边界。即匹配前一个子表达式且前一个表达式不能在字符串的收尾或开头(取决于\B 放置的位置)</td></tr><tr><td></td><td></td></tr></tbody></table><h3 id="组与引用"><a href="#组与引用" class="headerlink" title="组与引用"></a>组与引用</h3><p>（）表示捕获分组</p><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>()</td><td>捕获分组，把每个分组里匹配的值保存起来，多个可通过用 n 表示组的序号来查看</td></tr><tr><td></td><td></td></tr></tbody></table><h3 id="零宽断言"><a href="#零宽断言" class="headerlink" title="零宽断言"></a>零宽断言</h3><table><thead><tr><th>非捕获元</th><th>描述</th></tr></thead><tbody><tr><td>(?:pattern)</td><td>非捕获组，创建无法引用的分组。</td></tr><tr><td>(?&#x3D;pattern)</td><td>正向预查，在任何开始匹配圆括号内表达式的位置查询。匹配的元素后方紧跟着需要有能匹配括号内表达式匹配到的元素。</td></tr><tr><td>(?!pattern)</td><td>正向否定预查。在任何不匹配该表达式的位置查询。匹配到的元素后方紧跟着的不能含有括号内表达式匹配的元素。</td></tr><tr><td>(?&lt;&#x3D;pattern)</td><td>反向肯定预查。匹配元素的前一个元素是括号表达式陪陪的元素。</td></tr><tr><td>(?&lt;!&#x3D;pattern)</td><td>反向否定预查。匹配元素的前一个元素不能是括号表达式陪陪的元素。</td></tr></tbody></table><table><thead><tr><th>示例</th><th>描述</th></tr></thead><tbody><tr><td>r(?&#x3D;e)</td><td>匹配单词中后面有 e 的 r</td></tr><tr><td>r(?!e)</td><td>匹配单词中后面没有 e 的 r</td></tr><tr><td>(?&lt;&#x3D;e)r</td><td>匹配前面有 e 的 r</td></tr><tr><td>(?&lt;!&#x3D;e)r</td><td>匹配前面没有 e 的 r</td></tr></tbody></table><h3 id="flags-标志"><a href="#flags-标志" class="headerlink" title="flags 标志"></a>flags 标志</h3><p>flags 放置在 pattern 的后面，可以是多个 flags 同时使用。</p><table><thead><tr><th>标志</th><th>描述</th></tr></thead><tbody><tr><td>i</td><td>忽略大小写。</td></tr><tr><td>g</td><td>全局查找，确保表达式不会在第一个匹配项时停止。</td></tr><tr><td>m</td><td>多行查找，不启用^和$只匹配整个字符串的开始和结束，而不会单独匹配每一行。</td></tr><tr><td>s</td><td>默认.匹配的是除换行\n 以外的任一字符，加上 s 后.可以匹配包括换行在內的任一字符。</td></tr></tbody></table><h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><table><thead><tr><th>优先级</th><th>符号</th></tr></thead><tbody><tr><td>最高</td><td>\</td></tr><tr><td>高</td><td>()、(?:)、(?&#x3D;)、[]</td></tr><tr><td>中</td><td>*、+、?、{n}、{n,}、{n,m}</td></tr><tr><td>低</td><td>^、$、中介字符</td></tr><tr><td>次低</td><td>串联。相邻的字符连接在一起</td></tr><tr><td>最低</td><td>｜</td></tr></tbody></table><p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e06eed0-cf1c-44e7-a0bc-aee4e33945f9/Untitled.png" alt="正则表达的解析"></p><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><p>shell 的 sed 不支持、\d、\D、零宽断言，且 sed 下的正则表达没有懒惰模式，都是贪婪模式。</p><h2 id="Per"><a href="#Per" class="headerlink" title="Per"></a>Per</h2><p>可更好的替代 sed 使用。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> DEV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>这是一个测试页面</title>
+      <link href="/2023/06/04/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E9%A1%B5%E9%9D%A2/"/>
+      <url>/2023/06/04/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E9%A1%B5%E9%9D%A2/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/06/04/hello-world/"/>
+      <url>/2023/06/04/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

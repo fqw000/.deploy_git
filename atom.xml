@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Wangqifei</title>
+  <icon>https://wangqifei.eu.org/icon.png</icon>
+  <subtitle>依据个人需求而产生的一个记录站点</subtitle>
+  <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
+  
+  <link href="https://wangqifei.eu.org/"/>
+  <updated>2023-06-06T09:29:52.964Z</updated>
+  <id>https://wangqifei.eu.org/</id>
+  
+  <author>
+    <name>Wangqifei</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpotifyPremium实现</title>
+    <link href="https://wangqifei.eu.org/2023/06/06/SpotifyPremium%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://wangqifei.eu.org/2023/06/06/SpotifyPremium%E5%AE%9E%E7%8E%B0/</id>
+    <published>2023-06-06T09:12:39.000Z</published>
+    <updated>2023-06-06T09:29:52.964Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;主要实现以下功能：&quot;&gt;&lt;a href=&quot;#主要实现以下功能：&quot; class=&quot;headerlink&quot; title=&quot;主要实现以下功能：&quot;&gt;&lt;/a&gt;主要实现以下功能：&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;去广告&lt;/li&gt;
+&lt;li&gt;去除 14 天检测&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spotify" scheme="https://wangqifei.eu.org/tags/Spotify/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spotify歌词翻译实现</title>
+    <link href="https://wangqifei.eu.org/2023/06/06/Spotify%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://wangqifei.eu.org/2023/06/06/Spotify%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E5%AE%9E%E7%8E%B0/</id>
+    <published>2023-06-06T09:08:43.000Z</published>
+    <updated>2023-06-06T09:10:33.757Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;实现步骤：&quot;&gt;&lt;a href=&quot;#实现步骤：&quot; class=&quot;headerlink&quot; title=&quot;实现步骤：&quot;&gt;&lt;/a&gt;实现步骤：&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;·&lt;strong&gt;注册百度翻译个人开发者，然后申请百度翻译的 appid 和</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spotify" scheme="https://wangqifei.eu.org/tags/Spotify/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git安装后右键没有git bash的解决方案</title>
+    <link href="https://wangqifei.eu.org/2023/06/06/Git%E5%AE%89%E8%A3%85%E5%90%8E%E5%8F%B3%E9%94%AE%E6%B2%A1%E6%9C%89git-bash%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://wangqifei.eu.org/2023/06/06/Git%E5%AE%89%E8%A3%85%E5%90%8E%E5%8F%B3%E9%94%AE%E6%B2%A1%E6%9C%89git-bash%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2023-06-06T08:36:16.000Z</published>
+    <updated>2023-06-06T08:41:29.144Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Git&quot;&gt;&lt;a href=&quot;#Git&quot; class=&quot;headerlink&quot; title=&quot;Git&quot;&gt;&lt;/a&gt;Git&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;实现原理是使用注册表将 git bash 写入右键 1.将以下内容写入新建的.txt 文件。</summary>
+        
+      
+    
+    
+    
+    
+    <category term="DEV" scheme="https://wangqifei.eu.org/tags/DEV/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ADB</title>
+    <link href="https://wangqifei.eu.org/2023/06/06/ADB/"/>
+    <id>https://wangqifei.eu.org/2023/06/06/ADB/</id>
+    <published>2023-06-06T08:33:17.000Z</published>
+    <updated>2023-06-06T09:35:42.712Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/6844903645289398280#heading-15&quot;&gt;ADB 操作命令详解及用法大全&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载解压 adb android-platform-tools&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="DEV" scheme="https://wangqifei.eu.org/tags/DEV/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Regex 正则表达式</title>
+    <link href="https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>https://wangqifei.eu.org/2023/06/06/Regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
+    <published>2023-06-06T08:16:34.000Z</published>
+    <updated>2023-06-06T08:32:22.900Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;RegularExpression&quot;&gt;&lt;a href=&quot;#RegularExpression&quot; class=&quot;headerlink&quot; title=&quot;RegularExpression&quot;&gt;&lt;/a&gt;RegularExpression&lt;/h2&gt;&lt;p&gt;Regux</summary>
+        
+      
+    
+    
+    
+    
+    <category term="DEV" scheme="https://wangqifei.eu.org/tags/DEV/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>这是一个测试页面</title>
+    <link href="https://wangqifei.eu.org/2023/06/04/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E9%A1%B5%E9%9D%A2/"/>
+    <id>https://wangqifei.eu.org/2023/06/04/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E9%A1%B5%E9%9D%A2/</id>
+    <published>2023-06-04T09:38:02.000Z</published>
+    <updated>2023-06-04T10:27:00.907Z</updated>
+    
+    
+    
+    
+    
+    <category term="测试" scheme="https://wangqifei.eu.org/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://wangqifei.eu.org/2023/06/04/hello-world/"/>
+    <id>https://wangqifei.eu.org/2023/06/04/hello-world/</id>
+    <published>2023-06-04T08:39:28.209Z</published>
+    <updated>2023-06-04T08:39:28.209Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
