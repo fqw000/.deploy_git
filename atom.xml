@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-06-06T09:29:52.964Z</updated>
+  <updated>2023-06-08T05:48:21.017Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>windows系统安装推荐</title>
+    <link href="https://wangqifei.eu.org/2023/06/08/windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%8E%A8%E8%8D%90/"/>
+    <id>https://wangqifei.eu.org/2023/06/08/windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%8E%A8%E8%8D%90/</id>
+    <published>2023-06-08T05:47:17.000Z</published>
+    <updated>2023-06-08T05:48:21.017Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Tiny-win11-x2F-Tiny-win10-–NTDEV&quot;&gt;&lt;a href=&quot;#Tiny-win11-x2F-Tiny-win10-–NTDEV&quot; class=&quot;headerlink&quot; title=&quot;Tiny win11 &amp;#x2F; Tiny</summary>
+        
+      
+    
+    
+    
+    
+    <category term="windows" scheme="https://wangqifei.eu.org/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不使用MicrosoftStore安装Winget</title>
+    <link href="https://wangqifei.eu.org/2023/06/08/%E4%B8%8D%E4%BD%BF%E7%94%A8MicrosoftStore%E5%AE%89%E8%A3%85Winget/"/>
+    <id>https://wangqifei.eu.org/2023/06/08/%E4%B8%8D%E4%BD%BF%E7%94%A8MicrosoftStore%E5%AE%89%E8%A3%85Winget/</id>
+    <published>2023-06-08T05:39:38.000Z</published>
+    <updated>2023-06-08T05:55:15.840Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;winget&quot;&gt;&lt;a href=&quot;#winget&quot; class=&quot;headerlink&quot; title=&quot;winget&quot;&gt;&lt;/a&gt;winget&lt;/h2&gt;&lt;p&gt;winget 是优秀的 windows 端的软件管理工具，可以通过 MicrosoftStore</summary>
+        
+      
+    
+    
+    
+    
+    <category term="windows" scheme="https://wangqifei.eu.org/tags/windows/"/>
+    
+  </entry>
   
   <entry>
     <title>SpotifyPremium实现</title>
