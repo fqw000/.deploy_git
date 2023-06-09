@@ -585,11 +585,6 @@ h6 a:hover {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
-  a.meta {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 @media (min-width: 480px) {
   p {
@@ -1071,26 +1066,37 @@ h6 a:hover {
   margin-left: 0;
   list-style-type: none;
   display: flex;
+  flex-wrp: wrap;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 .post-list .post-item .meta {
   display: block;
   margin-right: 16px;
   min-width: 100px;
   color: #666;
-  font-size: 16px;
 }
 @media (min-width: 480px) {
   .post-list .post-item {
-    display: flex;
     margin-bottom: 5px;
-    flex-wrp: wrap;
-    flex-direction: row-reverse;
     justify-content: space-between;
   }
   .post-list .post-item .meta {
     text-align: left;
     position: relative;
     top: 6px;
+  }
+}
+@media (max-width: 480px) {
+  .post-list .post-item .dt-published {
+    font-size: 12px;
+  }
+  .post-list a.meta {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-image: none;
   }
 }
 .project-list {
