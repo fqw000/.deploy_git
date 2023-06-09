@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-06-08T09:42:17.861Z</updated>
+  <updated>2023-06-09T09:12:53.559Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>快柠檬的节点提取和转化</title>
+    <link href="https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E5%8C%96/"/>
+    <id>https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E5%8C%96/</id>
+    <published>2023-06-09T09:09:35.000Z</published>
+    <updated>2023-06-09T09:12:53.559Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="这里只做功能实现的技术演示"><a href="#这里只做功能实现的技术演示" class="headerlink" title="这里只做功能实现的技术演示"></a>这里只做功能实现的技术演示</h2>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="科学上网" scheme="https://wangqifei.eu.org/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>联系人信息跨设备即时同步的实现方案</title>
+    <link href="https://wangqifei.eu.org/2023/06/09/%E8%81%94%E7%B3%BB%E4%BA%BA%E4%BF%A1%E6%81%AF%E8%B7%A8%E8%AE%BE%E5%A4%87%E5%8D%B3%E6%97%B6%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/"/>
+    <id>https://wangqifei.eu.org/2023/06/09/%E8%81%94%E7%B3%BB%E4%BA%BA%E4%BF%A1%E6%81%AF%E8%B7%A8%E8%AE%BE%E5%A4%87%E5%8D%B3%E6%97%B6%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/</id>
+    <published>2023-06-09T08:01:18.000Z</published>
+    <updated>2023-06-09T08:14:39.234Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2023/06/09/Zy84RqI1k2a7tsE.png" alt="image.png"></p><blockquote><p>需求：各终端数据即时同步，换设备使用时不用来回导通讯录</p></blockquote><h2 id="实现方案："><a href="#实现方案：" class="headerlink" title="实现方案："></a><strong>实现方案：</strong></h2><p><strong>DAVx⁵+iCloud</strong></p><p><a href="https://www.davx5.com/">CalDAV, CardDAV and WebDAV for Android — DAVx⁵</a></p><h2 id="效果："><a href="#效果：" class="headerlink" title="效果："></a><strong>效果：</strong></h2><p>Android、ios、Mac 端保持联系人随时同步（新增和删除均可），不限设备数量，项目开源。</p><h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a><strong>注意事项：</strong></h2><p>这里需要在 icloud 里生成专用密码授权登录，不是使用 icloud 的登录密码！！！</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="ios" scheme="https://wangqifei.eu.org/tags/ios/"/>
+    
+    <category term="anroid" scheme="https://wangqifei.eu.org/tags/anroid/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一种ios内购的破解实现</title>
+    <link href="https://wangqifei.eu.org/2023/06/09/%E4%B8%80%E7%A7%8Dios%E5%86%85%E8%B4%AD%E7%9A%84%E7%A0%B4%E8%A7%A3%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://wangqifei.eu.org/2023/06/09/%E4%B8%80%E7%A7%8Dios%E5%86%85%E8%B4%AD%E7%9A%84%E7%A0%B4%E8%A7%A3%E5%AE%9E%E7%8E%B0/</id>
+    <published>2023-06-09T07:41:57.000Z</published>
+    <updated>2023-06-09T07:57:42.310Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2023/06/09/ES1mkFLO6RrQpZf.png" alt="image.png"></p><h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>通过将内购信息 adbk 备份文件导入非解锁内购的个人 Apple ID 下载的本应用内，实现内购信息与个人 Apple ID 的绑定，再通过应用数据的备份与还原功能实现在不能使用 Apps Manger 的 ios 设备上还原备份信息，实现内购的破解。</p><h2 id="步骤描述"><a href="#步骤描述" class="headerlink" title="步骤描述"></a>步骤描述</h2><ul><li>使用 Apps Manger 将已经内购的应用的内购信息备份成 adbk 文件。你也可以从网络等其他途径获得应用的 adbk 文件。</li><li>使用个人 Apple ID 下载该应用。</li><li>使用 Apps Manger 将含有内购信息的 adbk 文件还原到下载的应用。</li><li>使用 iMazing 将该应用数据备份导出。</li><li>使用 iMazing 在没有 Apps Manger 的任意版本号的设备（即使是 15.4.1 以上的系统也 OK）上将导出的应用宝数据备份还原。</li></ul><p>❗️ 对于需要绑定设备 ID 或者 icloud 的应用不要有太大的期待。</p><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果您不确定如何操作，建议先了解相关知识并备份好数据，以免出现意外情况。同时，<strong>这里只验证可行性</strong>，也要注意不要滥用内购恢复功能，尊重开发者的劳动成果并支持正版软件。👍</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="ios" scheme="https://wangqifei.eu.org/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title>小米电视调用原声安卓设置</title>

@@ -1093,7 +1093,6 @@ h6 a:hover {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-image: none;
   }
 }
 @media (max-width: 480px) {
@@ -1143,7 +1142,7 @@ article header .postdate {
 }
 article .content h2:before {
   position: absolute;
-  top: 6px;
+  top: -2px;
   left: -1rem;
   color: #cc2a41;
   content: "#";
