@@ -693,7 +693,7 @@ h6 a:hover {
     text-align: center;
   }
   #header #nav ul.responsive li {
-    display: block;
+    display: inline-block;
   }
   #header #nav ul a[aria-label="Menu"] {
     display: inline-block;
@@ -701,13 +701,13 @@ h6 a:hover {
     min-height: 48px;
   }
   #header #nav li:not(:first-child) {
-    padding-top: 1rem;
-    padding-left: 100px;
-    font-size: 1.1rem;
+    padding-left: 6px;
     float: left; /* 或者设置为 right */
-    margin-right: -100px; /* 可以添加一些间距 */
     position: relative;
-    top: -35px;
+    top: -18px;
+    left: 100px;
+    border-left: 1px dotted;
+    border-color: #cc2a41;
   }
 }
 #header-post {
