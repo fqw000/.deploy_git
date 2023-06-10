@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="测试 lemon 使用，过度依赖现有运行规则，随时会失效，不保证维护。这里只是探索功能实现的技术记录，谢绝传播使用。  鉴于 Clash 的完善，目前对各平台的良好支持，一个配置全平台通用的便利让我不的不考虑全面转战 Clash。对个人而言：折腾 &gt; 使用 。  项目地址  一些说明 通过提取快柠檬客户端 v2rayNG 的订阅链接通过 shortcuts 自动更新到 lemon.site">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快柠檬的节点提取和转换">
+<meta property="og:url" content="https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:site_name" content="Wangqifei">
+<meta property="og:description" content="测试 lemon 使用，过度依赖现有运行规则，随时会失效，不保证维护。这里只是探索功能实现的技术记录，谢绝传播使用。  鉴于 Clash 的完善，目前对各平台的良好支持，一个配置全平台通用的便利让我不的不考虑全面转战 Clash。对个人而言：折腾 &gt; 使用 。  项目地址  一些说明 通过提取快柠檬客户端 v2rayNG 的订阅链接通过 shortcuts 自动更新到 lemon.site">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-09T09:09:35.000Z">
+<meta property="article:modified_time" content="2023-06-10T09:35:13.002Z">
+<meta property="article:author" content="Wangqifei">
+<meta property="article:tag" content="科学上网">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico00">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>快柠檬的节点提取和转换</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Wangqifei" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/06/09/%E8%81%94%E7%B3%BB%E4%BA%BA%E4%BF%A1%E6%81%AF%E8%B7%A8%E8%AE%BE%E5%A4%87%E5%8D%B3%E6%97%B6%E5%90%8C%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li> 
+  -->
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&text=快柠檬的节点提取和转换"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&is_video=false&description=快柠檬的节点提取和转换"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=快柠檬的节点提取和转换&body=Check out this article: https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&name=快柠檬的节点提取和转换&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&t=快柠檬的节点提取和转换"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+ -->
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">一些说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-github-action-%E7%9A%84%E5%9D%91%EF%BC%8C%E8%90%8C%E6%96%B0%E5%85%B3%E6%B3%A8%E3%80%82"><span class="toc-number"></span> <span class="toc-text">关于 github action 的坑，萌新关注。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lemonlite-yaml"><span class="toc-number"></span> <span class="toc-text">lemonlite.yaml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lemon-usr-yaml"><span class="toc-number"></span> <span class="toc-text">lemon-usr.yaml</span></a>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        快柠檬的节点提取和转换
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Wangqifei</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-09T09:09:35.000Z" class="dt-published" itemprop="datePublished">2023-06-09</time>
+        
+        (Updated: <time datetime="2023-06-10T09:35:13.002Z" class="dt-updated" itemprop="dateModified">2023-06-10</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <blockquote>
+<p>测试 lemon 使用，过度依赖现有运行规则，随时会失效，不保证维护。<br>这里只是探索功能实现的技术记录，谢绝传播使用。</p>
+</blockquote>
+<p>鉴于 Clash 的完善，目前对各平台的良好支持，一个配置全平台通用的便利让我不的不考虑全面转战 Clash。<br>对个人而言：折腾 &gt; 使用 。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/fqw000/lemon">项目地址</a></p>
+</blockquote>
+<h3 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h3><ul>
+<li>通过提取快柠檬客户端 v2rayNG 的订阅链接通过 shortcuts 自动更新到 lemon.site</li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/fqw000/lemon/main/.github/workflows/extract_lemon_list.yml">extract-lemon-list.yml</a> 中没有加入异常处理机制，为确保运行正常，务必确保 lemon.site 文件内容为单行网址且仅有单行，<del>shortcuts 里有处理自动提交时可忽略该问题</del>（目前在写 shortcuts 的过程中遇到了不能正常使用 github api 异常还没解决）。</li>
+<li>触发 GithubAction <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/fqw000/lemon/main/.github/workflows/extract_lemon_list.yml">extract-lemon-list.yml</a><ul>
+<li>每 3 个小时自动更新一次</li>
+<li>读取 lemon.site 内的订阅链接网址对应的内容</li>
+<li>将网址内容同步至 lemon.sub，解决 v2ray 订阅</li>
+<li>对 lemon.sub 进行解码同步至 lemon.list，解决 loon 订阅</li>
+<li>修改 lemon.site 读取的链接网址为客户端提供的 Clash 的订阅网址，并读取 clash 订阅到 lemon.yaml</li>
+<li>提取 clash 订阅内的 proxies 内容到 lemonnode.yaml</li>
+<li>使用 lemonlite.yaml 保存 clash 订阅内的 proxies 内容，并与 lemonbanner.yaml 合并到 lemonliste.yaml 形成一个完整的自定义订阅内容</li>
+<li>注：lemonbanner.yaml 内容为代理集和规则集合。</li>
+</ul>
+</li>
+<li>不是最优解，只是能用。</li>
+<li>附 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/fqw000/lemon/main/.github/workflows/extract_lemon_list.yml">extract-lemon-list.yml</a> 参考</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">name: extract_lemon_list</span><br><span class="line">on:</span><br><span class="line">  schedule:</span><br><span class="line">    - cron: <span class="string">&#x27;0 */3 * * *&#x27;</span></span><br><span class="line">  push:</span><br><span class="line">    branches: [ main ]</span><br><span class="line">    path:</span><br><span class="line">      - <span class="string">&quot;lemon.site&quot;</span></span><br><span class="line"><span class="built_in">jobs</span>:</span><br><span class="line">  read-and-save:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">    - name: Checkout code</span><br><span class="line">      uses: actions/checkout@v2</span><br><span class="line">    - name: Read and save content</span><br><span class="line">      run: |</span><br><span class="line">          url=$(<span class="built_in">cat</span> lemon.site)</span><br><span class="line">          <span class="built_in">echo</span> <span class="string">&quot;url=<span class="variable">$url</span>&quot;</span> &gt;&gt; <span class="variable">$GITHUB_ENV</span></span><br><span class="line">          <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; lemon.sub</span><br><span class="line">          <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; lemon.list</span><br><span class="line">          curl -L <span class="string">&quot;<span class="variable">$url</span>&quot;</span> -o lemon.sub</span><br><span class="line">          <span class="built_in">cat</span> lemon.sub | <span class="built_in">base64</span> -d &gt; lemon.list</span><br><span class="line"></span><br><span class="line">          url2=$(<span class="built_in">cat</span> lemon.site | sed <span class="string">&#x27;s/vrn/ch/g&#x27;</span>)</span><br><span class="line">          <span class="built_in">echo</span> <span class="string">&quot;url2=<span class="variable">$url2</span>&quot;</span> &gt;&gt; <span class="variable">$GITHUB_ENV</span></span><br><span class="line">          <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; lemon.yaml</span><br><span class="line">          curl -L <span class="string">&quot;<span class="variable">$url2</span>&quot;</span> -o lemon.yaml</span><br><span class="line"></span><br><span class="line">          <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; lemonlite.yaml</span><br><span class="line">          <span class="built_in">cat</span> lemon.yaml | perl -ne <span class="string">&#x27;print unless /^proxy-group/../^$/&#x27;</span> &gt; lemonlite.yaml</span><br><span class="line">          <span class="built_in">cat</span> lemonlitebanner.yaml &gt;&gt; lemonlite.yaml</span><br><span class="line">          <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; lemonnode.yaml</span><br><span class="line">          <span class="built_in">cat</span> lemon.yaml | perl -ne <span class="string">&#x27;print unless /^proxy-group/../^$/&#x27;</span> &gt; lemonnode.yaml</span><br><span class="line"></span><br><span class="line">    - name: Commit changes</span><br><span class="line">      run: |</span><br><span class="line">        git config --<span class="built_in">local</span> user.email <span class="string">&quot; &quot;</span></span><br><span class="line">        git config --<span class="built_in">local</span> user.name <span class="string">&quot; &quot;</span></span><br><span class="line">        git add lemon.sub lemon.list lemon.yaml lemonlite.yaml lemonnode.yaml</span><br><span class="line">        git commit -m <span class="string">&quot;Add lemon.sub lemon.list lemon.yaml lemonlite.yaml lemonnode.yaml&quot;</span></span><br><span class="line">        git push</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于-github-action-的坑，萌新关注。"><a href="#关于-github-action-的坑，萌新关注。" class="headerlink" title="关于 github action 的坑，萌新关注。"></a>关于 github action 的坑，萌新关注。</h2><ul>
+<li>涉及到文件提交等操作，需要在 repo 设置里代开 action 的读写权限,否则会面临提价失败。即使你是 owner</li>
+<li><blockquote>
+<p>setting-Actions-General-workflow permissions-打开 read and write permissions</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="lemonlite-yaml"><a href="#lemonlite-yaml" class="headerlink" title="lemonlite.yaml"></a><del>lemonlite.yaml</del></h2><p><del>这里使用的是黑名单机制，gfw 列表走代理，其余 DIRECT,只是对 spotify 和 telegram 单独分流。<br>没有涉及任何去广告和 script 操作，去广告交给了 AdgurandHome 和 adbyby.</del></p>
+<h2 id="lemon-usr-yaml"><a href="#lemon-usr-yaml" class="headerlink" title="lemon-usr.yaml"></a><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/fqw000/lemon/main/lemon-usr.yaml">lemon-usr.yaml</a></h2><p>舍弃了<del>lemonlite.yaml</del>.使用了代理集和规则集的引用，只是使用了 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/fqw000/lemon/main/.github/workflows/extract_lemon_list.yml">extract-lemon-list.yml</a> 生成的 lemonnode.yaml 代理集文件。舍弃了没有代理集时的其他繁琐的实现操作。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">一些说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-github-action-%E7%9A%84%E5%9D%91%EF%BC%8C%E8%90%8C%E6%96%B0%E5%85%B3%E6%B3%A8%E3%80%82"><span class="toc-number"></span> <span class="toc-text">关于 github action 的坑，萌新关注。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lemonlite-yaml"><span class="toc-number"></span> <span class="toc-text">lemonlite.yaml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lemon-usr-yaml"><span class="toc-number"></span> <span class="toc-text">lemon-usr.yaml</span></a>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li> 
+  -->
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&text=快柠檬的节点提取和转换"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&is_video=false&description=快柠檬的节点提取和转换"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=快柠檬的节点提取和转换&body=Check out this article: https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&title=快柠檬的节点提取和转换"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&name=快柠檬的节点提取和转换&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/09/%E5%BF%AB%E6%9F%A0%E6%AA%AC%E7%9A%84%E8%8A%82%E7%82%B9%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2/&t=快柠檬的节点提取和转换"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+ -->
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <!-- 
+          <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a> 
+        -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    Wangqifei
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

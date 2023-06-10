@@ -170,10 +170,10 @@
 
   <div class="content e-content" itemprop="articleBody">
     <h2 id="winget"><a href="#winget" class="headerlink" title="winget"></a>winget</h2><p>winget 是优秀的 windows 端的软件管理工具，可以通过 MicrosoftStore 很便捷的安装，只是我在安装 win 的时候使用 Tiny10 安装了个 Windows 10 IoT 企业版 LTSC,没有 MicrosoftStore。以下是解决方案：<br>运行 powershell 执行以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set-PSRepository -Name &#x27;PSGallery&#x27; -InstallationPolicy Trusted</span><br><span class="line">Install-Script -Name winget-install -Force</span><br><span class="line">winget-install.ps1</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Set</span>-PSRepository -<span class="type">Name</span> <span class="string">&#x27;PSGallery&#x27;</span> -InstallationPolicy <span class="keyword">Trusted</span></span><br><span class="line">Install-Script -<span class="type">Name</span> winget-install -Force</span><br><span class="line">winget-install.ps1</span><br></pre></td></tr></table></figure>
 
 <h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>如果你的 powershell 运行提示：because running scripts is disabled on this system’需要先解决这个报错。<br>报错原因是：powershell 中默认的 execution policy 是 restricted。可以使用 Get-ExecutionPolicy 查看其状态。<br>解决方案：设置 execution policy 为 remotesigned<br>PowerShell 执行以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Set</span>-ExecutionPolicy <span class="comment">RemoteSigned</span></span><br></pre></td></tr></table></figure>
 
   </div>
 </article>

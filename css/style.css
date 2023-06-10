@@ -344,7 +344,6 @@ body .h2 {
 }
 body h3 {
   color: rgba(86,124,119,0.8);
-  text-decoration: underline;
   font-weight: bold;
   font-size: 18px;
 }
@@ -1061,6 +1060,7 @@ h6 a:hover {
 }
 .post-list {
   padding: 0;
+  margin-top: -5px;
 }
 .post-list .post-item {
   margin-bottom: 1rem;
@@ -1173,15 +1173,14 @@ article .content .video-container embed {
   height: 100%;
 }
 article .content blockquote {
-  margin: 1rem 10px;
-  padding: 0.5em 10px;
+  margin: 0.5rem 5px;
+  padding: 0.5em 5px;
   background: inherit;
   color: #cc2a41;
   quotes: "\201C" "\201D" "\2018" "\2019";
-  font-weight: bold;
 }
 article .content blockquote p {
-  margin: 0;
+  margin: 0 0 0 30px;
 }
 article .content blockquote:before {
   margin-right: 0.25em;
@@ -1354,7 +1353,7 @@ article .content .caption {
 }
 .pagination {
   display: inline-block;
-  margin-top: 2rem;
+  margin-top: 0rem;
   width: 100%;
   text-align: center;
 }
@@ -1363,11 +1362,14 @@ article .content .caption {
   font-size: 0.8rem;
 }
 .pagination a {
-  padding: 4px 6px;
+  padding: 0px 6px;
   border-radius: 5px;
   background-image: none;
   color: #22272a;
   text-decoration: none;
+}
+.pagination a i {
+  color: #cc2a41;
 }
 .pagination a:hover {
   background-image: none;
