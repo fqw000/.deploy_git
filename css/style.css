@@ -434,6 +434,9 @@ body td {
   padding: 0 8px;
   border-bottom: none;
 }
+body li::marker {
+  color: #008000;
+}
 *,
 *:before,
 *:after {
@@ -495,61 +498,67 @@ body {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
+  text-indent: 2em;
 }
-code {
+.content p i {
+  text-indent: 0em;
+}
+.content code {
   hyphens: manual;
   -moz-hyphens: manual;
   -ms-hyphens: manual;
   -webkit-hyphens: manual;
 }
-a {
+.content a {
   color: #22272a;
   text-decoration: none;
+  cursor: pointer;
   background-image: linear-gradient(transparent, transparent 5px, #22272a 5px, #22272a);
   background-position: bottom;
   background-size: 100% 6px;
   background-repeat: repeat-x;
 }
-a:hover {
+.content a:hover {
   background-image: linear-gradient(transparent, transparent 4px, rgba(86,124,119,0.4) 4px, rgba(86,124,119,0.4));
 }
-a.icon {
+.content a.icon {
   background: none;
   font-size: 22px;
   color: #1d9bf0;
+  text-indent: 0em;
 }
-a.icon:hover {
+.content a.icon:hover {
   color: rgba(86,124,119,0.4);
 }
-h1 a,
-.h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
+.content h1 a,
+.content .h1 a,
+.content h2 a,
+.content h3 a,
+.content h4 a,
+.content h5 a,
+.content h6 a {
   background: none;
   color: inherit;
   text-decoration: none;
 }
-h1 a:hover,
-.h1 a:hover,
-h2 a:hover,
-h3 a:hover,
-h4 a:hover,
-h5 a:hover,
-h6 a:hover {
+.content h1 a:hover,
+.content .h1 a:hover,
+.content h2 a:hover,
+.content h3 a:hover,
+.content h4 a:hover,
+.content h5 a:hover,
+.content h6 a:hover {
   background-image: linear-gradient(transparent, transparent 6px, rgba(86,124,119,0.4) 6px, rgba(86,124,119,0.4));
   background-position: bottom;
   background-size: 100% 6px;
   background-repeat: repeat-x;
 }
-h6 a {
+.content h6 a {
   background: none;
   color: inherit;
   text-decoration: none;
 }
-h6 a:hover {
+.content h6 a:hover {
   background-image: linear-gradient(transparent, transparent 6px, rgba(86,124,119,0.4) 6px, rgba(86,124,119,0.4));
   background-position: bottom;
   background-size: 100% 6px;
@@ -566,6 +575,7 @@ h6 a:hover {
   }
   .image-wrap p {
     flex: 1 0 65%;
+li
   }
 }
 .max-width {
@@ -1176,6 +1186,7 @@ article .content blockquote {
 }
 article .content blockquote p {
   margin: 0 0 0 30px;
+  text-indent: 0em;
 }
 article .content blockquote:before {
   margin-right: 0.25em;
@@ -1640,6 +1651,7 @@ code {
   border-radius: 2px;
   -webkit-border-radius: 2px;
   font-family: "LXGWWenKaiMono", monospace;
+  color: #008000;
 }
 .highlight {
   overflow-x: auto;
