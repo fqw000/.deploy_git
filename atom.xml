@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-06-26T06:55:53.881Z</updated>
+  <updated>2023-06-26T10:25:20.809Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Storm Sniffer的功能解锁</title>
+    <link href="https://wangqifei.eu.org/2023/06/26/Storm%20Sniffer%E7%9A%84%E5%8A%9F%E8%83%BD%E8%A7%A3%E9%94%81/"/>
+    <id>https://wangqifei.eu.org/2023/06/26/Storm%20Sniffer%E7%9A%84%E5%8A%9F%E8%83%BD%E8%A7%A3%E9%94%81/</id>
+    <published>2023-06-26T08:31:27.000Z</published>
+    <updated>2023-06-26T10:25:20.809Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Storm-Sniffer-网络抓包工具的-vip-功能解锁"><a href="#Storm-Sniffer-网络抓包工具的-vip-功能解锁" class="headerlink" title="Storm Sniffer 网络抓包工具的 vip 功能解锁"></a>Storm Sniffer 网络抓包工具的 vip 功能解锁</h2><ul><li><p>脚本方案：<br>主要是使用一下两个插件来试下 vip 功能：<br><a href="https://raw.githubusercontent.com/fqw000/tools/main/plugin/stormsniffer1.plugin">stormsniffer1.plugin</a><br><a href="(https://raw.githubusercontent.com/fqw000/tools/main/plugin/stormsniffer2.plugin">stormsniffer2.plugin</a><br>这里是使用 Loon 配置的插件，使用时保持插件开启在打开 stormsniffer 即可实现 vip 功能解锁。</p></li><li><p>adbk 备份文件方案<br>主要是使用会员的到处的 adbk 备份文件，在需要破解的机器上恢复备份文件实现 vip 功能，可以参考<a href="../../09/%E4%B8%80%E7%A7%8Dios%E5%86%85%E8%B4%AD%E7%9A%84%E7%A0%B4%E8%A7%A3%E5%AE%9E%E7%8E%B0/">一种 ios 内购的破解实现</a></p></li></ul>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="ios" scheme="https://wangqifei.eu.org/tags/ios/"/>
+    
+    <category term="carck" scheme="https://wangqifei.eu.org/tags/carck/"/>
+    
+  </entry>
   
   <entry>
     <title>ios抓包去广告的一个操作实例演示</title>
