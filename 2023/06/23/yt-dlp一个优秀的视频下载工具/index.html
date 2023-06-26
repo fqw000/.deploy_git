@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="yt-dlpyt-dlp 是一个基于 youtube-dl 的命令行工具，用于下载网络视频和音频。它是 youtube-dl 的扩展版本，提供了更多的功能和选项，并且一般会更快地更新以适应视频网站的更改。除了支持 YouTube，yt-dlp 还支持许多其他视频和音频网站，包括 bilibili、 Vimeo、Dailymotion、Facebook、SoundCloud 等等。项目地址：yt-d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yt-dlp一个优秀的视频下载工具">
+<meta property="og:url" content="https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="栖 息 地">
+<meta property="og:description" content="yt-dlpyt-dlp 是一个基于 youtube-dl 的命令行工具，用于下载网络视频和音频。它是 youtube-dl 的扩展版本，提供了更多的功能和选项，并且一般会更快地更新以适应视频网站的更改。除了支持 YouTube，yt-dlp 还支持许多其他视频和音频网站，包括 bilibili、 Vimeo、Dailymotion、Facebook、SoundCloud 等等。项目地址：yt-d">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-23T08:16:40.000Z">
+<meta property="article:modified_time" content="2023-06-23T08:37:54.118Z">
+<meta property="article:author" content="Wangqifei">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico00">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>yt-dlp一个优秀的视频下载工具</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+      <!-- 霞鹜文楷 Regular -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Regular.css" />
+      <!-- 霞鹜文楷 Lite -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Light.css" />
+      <!-- 霞鹜文楷 Bold -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Bold.css" />
+      <!-- 霞鹜文楷 Mono Regular -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Regular.css" />
+      <!-- 霞鹜文楷 Mono Lite -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Light.css" />
+      <!-- 霞鹜文楷 Mono Bold -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Bold.css" />
+  <!--google search console验证  -->
+  <meta name="google-site-verification" content="6lVEiGTTfQ7cgd8Cjy4H3MoS59-Bspl18UX-21EvKUc" />
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="栖 息 地" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/06/20/Pro%E5%AE%89%E8%A3%85google%E6%A1%86%E6%9E%B6/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li> 
+  -->
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&text=yt-dlp一个优秀的视频下载工具"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&is_video=false&description=yt-dlp一个优秀的视频下载工具"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=yt-dlp一个优秀的视频下载工具&body=Check out this article: https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&name=yt-dlp一个优秀的视频下载工具&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&t=yt-dlp一个优秀的视频下载工具"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+ -->
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#yt-dlp"><span class="toc-number">1.</span> <span class="toc-text">yt-dlp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%8F%82%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">安装及使用参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ios-%E7%AB%AF%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">ios 端使用</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        yt-dlp一个优秀的视频下载工具
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Wangqifei</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-23T08:16:40.000Z" class="dt-published" itemprop="datePublished">2023-06-23</time>
+        
+        (Updated: <time datetime="2023-06-23T08:37:54.118Z" class="dt-updated" itemprop="dateModified">2023-06-23</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="yt-dlp"><a href="#yt-dlp" class="headerlink" title="yt-dlp"></a>yt-dlp</h2><p>yt-dlp 是一个基于 youtube-dl 的命令行工具，用于下载网络视频和音频。它是 youtube-dl 的扩展版本，提供了更多的功能和选项，并且一般会更快地更新以适应视频网站的更改。除了支持 YouTube，yt-dlp 还支持许多其他视频和音频网站，包括 bilibili、 Vimeo、Dailymotion、Facebook、SoundCloud 等等。项目地址：<a target="_blank" rel="noopener" href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a></p>
+<h2 id="安装及使用参考"><a href="#安装及使用参考" class="headerlink" title="安装及使用参考"></a>安装及使用参考</h2><p>使用参考：<a target="_blank" rel="noopener" href="https://www.rapidseedbox.com/blog/yt-dlp-complete-guide">YT-DLP: The Complete Guide (2023)</a></p>
+<h2 id="ios-端使用"><a href="#ios-端使用" class="headerlink" title="ios 端使用"></a>ios 端使用</h2><p>yt-dlp 在 windows、macos、linux 的安装使用以上已经介绍的非常详细了。抽时间阅读下文档基本的功能用法就可以掌握了。<br>在 ai 孙燕姿刚出来那会，个人有个需求就是在手机上下载这些 ai 孙燕姿的翻唱，毕竟在 pc 上下载再导入到手机比较繁琐。于是尝试了下在 ios 安装 yt-dlp。</p>
+<p>ios 端需要安装 ish 或者 a-shell 等工具然后安装 yt-dlp.这里推荐 a-shell ,配置更方便些。</p>
+<p>1.appstore 安装 a-shell。</p>
+<p>2.安装 SW-DLT。<a target="_blank" rel="noopener" href="https://routinehub.co/download/38094/">Shortcuts</a></p>
+<p>3.运行 SW-DLT.注意首次运行需要设置 delete all –&gt; true 删除所有的 depends，然后设置 delete all –&gt; false 再运行更新 depends。（需要注意 a-shell 软件源的连通性）</p>
+<p>4.运行 SW-DLT 使用功能(至少一次，确保 depens 安装正确)，或者在 a-shell 里使用命令运行 dy-dlp。</p>
+<p>5.下载后的文件在 files-on My iphone - a-Shell 里。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#yt-dlp"><span class="toc-number">1.</span> <span class="toc-text">yt-dlp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%8F%82%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">安装及使用参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ios-%E7%AB%AF%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">ios 端使用</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li> 
+  -->
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&text=yt-dlp一个优秀的视频下载工具"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&is_video=false&description=yt-dlp一个优秀的视频下载工具"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=yt-dlp一个优秀的视频下载工具&body=Check out this article: https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&title=yt-dlp一个优秀的视频下载工具"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&name=yt-dlp一个优秀的视频下载工具&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/&t=yt-dlp一个优秀的视频下载工具"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+ -->
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <!-- 
+          <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a> 
+        -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    Wangqifei
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

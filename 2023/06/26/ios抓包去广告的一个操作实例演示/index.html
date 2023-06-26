@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="555 影视的 ios 伪装上架 app 去广告AppStore 上很多影视 APP 都是伪装上架，555 影视是其中之一，除了一些色情系的广告植入之外其他都还是不错的，并且支持 TV 端。这里就使用纯 ios 端演示下如何去抓包并实现去广告 主要工具抓包工具：Storm Sniffer(小螃蟹)。其他抓包工具也同理，appstore 上抓包工具非常多。重写工具：LOON,类似的网络调试工具也很">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ios抓包去广告的一个操作实例演示">
+<meta property="og:url" content="https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/index.html">
+<meta property="og:site_name" content="栖 息 地">
+<meta property="og:description" content="555 影视的 ios 伪装上架 app 去广告AppStore 上很多影视 APP 都是伪装上架，555 影视是其中之一，除了一些色情系的广告植入之外其他都还是不错的，并且支持 TV 端。这里就使用纯 ios 端演示下如何去抓包并实现去广告 主要工具抓包工具：Storm Sniffer(小螃蟹)。其他抓包工具也同理，appstore 上抓包工具非常多。重写工具：LOON,类似的网络调试工具也很">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/06/26/gKtTNQzfWOAcldB.jpg">
+<meta property="article:published_time" content="2023-06-26T02:49:58.000Z">
+<meta property="article:modified_time" content="2023-06-26T06:55:53.881Z">
+<meta property="article:author" content="Wangqifei">
+<meta property="article:tag" content="抓包">
+<meta property="article:tag" content="去广告">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/06/26/gKtTNQzfWOAcldB.jpg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico00">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>ios抓包去广告的一个操作实例演示</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+      <!-- 霞鹜文楷 Regular -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Regular.css" />
+      <!-- 霞鹜文楷 Lite -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Light.css" />
+      <!-- 霞鹜文楷 Bold -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Bold.css" />
+      <!-- 霞鹜文楷 Mono Regular -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Regular.css" />
+      <!-- 霞鹜文楷 Mono Lite -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Light.css" />
+      <!-- 霞鹜文楷 Mono Bold -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Bold.css" />
+  <!--google search console验证  -->
+  <meta name="google-site-verification" content="6lVEiGTTfQ7cgd8Cjy4H3MoS59-Bspl18UX-21EvKUc" />
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="栖 息 地" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/06/23/yt-dlp%E4%B8%80%E4%B8%AA%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li> 
+  -->
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&text=ios抓包去广告的一个操作实例演示"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&is_video=false&description=ios抓包去广告的一个操作实例演示"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ios抓包去广告的一个操作实例演示&body=Check out this article: https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&name=ios抓包去广告的一个操作实例演示&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&t=ios抓包去广告的一个操作实例演示"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+ -->
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#555-%E5%BD%B1%E8%A7%86%E7%9A%84-ios-%E4%BC%AA%E8%A3%85%E4%B8%8A%E6%9E%B6-app-%E5%8E%BB%E5%B9%BF%E5%91%8A"><span class="toc-number">1.</span> <span class="toc-text">555 影视的 ios 伪装上架 app 去广告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">主要工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">实现步骤</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        ios抓包去广告的一个操作实例演示
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Wangqifei</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-26T02:49:58.000Z" class="dt-published" itemprop="datePublished">2023-06-26</time>
+        
+        (Updated: <time datetime="2023-06-26T06:55:53.881Z" class="dt-updated" itemprop="dateModified">2023-06-26</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A/" rel="tag">去广告</a>, <a class="p-category" href="/tags/%E6%8A%93%E5%8C%85/" rel="tag">抓包</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p><img src="https://s2.loli.net/2023/06/26/gKtTNQzfWOAcldB.jpg" alt="photo_2023-06-26_10-47-29.jpg"></p>
+<h3 id="555-影视的-ios-伪装上架-app-去广告"><a href="#555-影视的-ios-伪装上架-app-去广告" class="headerlink" title="555 影视的 ios 伪装上架 app 去广告"></a>555 影视的 ios 伪装上架 app 去广告</h3><p>AppStore 上很多影视 APP 都是伪装上架，555 影视是其中之一，除了一些色情系的广告植入之外其他都还是不错的，并且支持 TV 端。这里就使用纯 ios 端演示下如何去抓包并实现去广告</p>
+<h3 id="主要工具"><a href="#主要工具" class="headerlink" title="主要工具"></a>主要工具</h3><p>抓包工具：Storm Sniffer(小螃蟹)。其他抓包工具也同理，appstore 上抓包工具非常多。<br>重写工具：LOON,类似的网络调试工具也很多，自行选择。</p>
+<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ul>
+<li>开启 Storm Sniffer，打开 mitm 和 http capture</li>
+<li>打开 555 影视，内容加载完成</li>
+<li>关闭 http capture，打开抓取的数据，并找到疑似广告内容的数据请求，优先从图片请求中筛选更直观.</li>
+<li>复制该 request url 的文件名，在所有请求中查找该文件名，打开筛选的请求及 response 并确认是否有含有广告内容</li>
+<li>分析 json 数据，找出广告内容的规律：轮播广告的<code>type</code>值都是 <code>3</code>,banner 广告的 <code>layout</code>值都是<code>adbert_self</code></li>
+<li>根据找出的规律写个 js，并将请求的 url 转换成正则。</li>
+</ul>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[Mitm]</span></span><br><span class="line"><span class="comment">hostname =a.weilai555.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">[Script]</span></span><br><span class="line"><span class="comment">http-response ^https?:\/\/a\.weilai555\.com:1000\/api\/v1\/movie\/index_recommend\?pack=([\w\/\+\%]+)&amp;signature=([\w]+)$ script-path=https://raw.githubusercontent.com/fqw000/tools/main/script/555.js, requires-body=true, binary-body-mode=false, timeout=10, tag=555去广告</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> body = <span class="symbol">$respo</span>nse.body;</span><br><span class="line"><span class="keyword">var</span> obj = JSON.parse(body);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 屏蔽layout值为advert_self的项</span></span><br><span class="line"><span class="keyword">if</span> (obj.data &amp;&amp; obj.data.<span class="built_in">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> newData = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; obj.data.<span class="built_in">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.data[i].layout !== <span class="string">&quot;advert_self&quot;</span>) &#123;</span><br><span class="line">      newData.<span class="built_in">push</span>(obj.data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  obj.data = newData;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 过滤轮播图中type为3的项</span></span><br><span class="line"><span class="keyword">if</span> (obj.data &amp;&amp; obj.data.<span class="built_in">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> carousel = obj.data.<span class="built_in">find</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.title === <span class="string">&#x27;轮播图&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span> (carousel &amp;&amp; carousel.list &amp;&amp; carousel.list.<span class="built_in">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    carousel.list = carousel.list.<span class="built_in">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> item.type !== <span class="number">3</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="symbol">$do</span>ne(&#123;<span class="attr">body</span>: JSON.stringify(obj)&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置 loon，实现 rewrite。这里图方便配置成了<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/fqw000/tools/main/plugin/555.plugin">555 去广告插件</a>,其他网络调试工具的配置请自行调整。</li>
+</ul>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 555.plugin</span></span><br><span class="line"></span><br><span class="line"># <span class="number">555</span>去广告</span><br><span class="line"><span class="meta">#!name=555去广告</span></span><br><span class="line"><span class="meta">#!desc=不包含开屏广告</span></span><br><span class="line"><span class="meta">#!author=wangqifei</span></span><br><span class="line"></span><br><span class="line">[Mitm]</span><br><span class="line">hostname =a.weilai555.com</span><br><span class="line"></span><br><span class="line">[Script]</span><br><span class="line">http-response ^https?:\/\/a\.weilai555\.com:<span class="number">1000</span>\/api\/v1\/movie\/index_recommend\?pack=([\w\/\+\%]+)&amp;signature=([\w]+)$ script-path=https:<span class="comment">//raw.githubusercontent.com/fqw000/tools/main/script/555.js, requires-body=true, binary-body-mode=false, timeout=10, tag=555去广告</span></span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#555-%E5%BD%B1%E8%A7%86%E7%9A%84-ios-%E4%BC%AA%E8%A3%85%E4%B8%8A%E6%9E%B6-app-%E5%8E%BB%E5%B9%BF%E5%91%8A"><span class="toc-number">1.</span> <span class="toc-text">555 影视的 ios 伪装上架 app 去广告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">主要工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">实现步骤</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li> 
+  -->
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&text=ios抓包去广告的一个操作实例演示"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&is_video=false&description=ios抓包去广告的一个操作实例演示"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ios抓包去广告的一个操作实例演示&body=Check out this article: https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&title=ios抓包去广告的一个操作实例演示"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&name=ios抓包去广告的一个操作实例演示&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2023/06/26/ios%E6%8A%93%E5%8C%85%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/&t=ios抓包去广告的一个操作实例演示"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+ -->
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <!-- 
+          <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a> 
+        -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    Wangqifei
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
