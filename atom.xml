@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-06-26T10:25:20.809Z</updated>
+  <updated>2023-07-01T05:05:33.985Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Immersive Translate一个好用的翻译工具</title>
+    <link href="https://wangqifei.eu.org/2023/07/01/Immersive-Translate%E4%B8%80%E4%B8%AA%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BF%BB%E8%AF%91%E5%B7%A5%E5%85%B7/"/>
+    <id>https://wangqifei.eu.org/2023/07/01/Immersive-Translate%E4%B8%80%E4%B8%AA%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BF%BB%E8%AF%91%E5%B7%A5%E5%85%B7/</id>
+    <published>2023-07-01T04:54:56.000Z</published>
+    <updated>2023-07-01T05:05:33.985Z</updated>
+    
+    <content type="html"><![CDATA[<p>AI 爆发以后，翻译工具层出不穷，优秀的翻译工具也有不少，有两个特别值得推荐的：</p><ul><li><a href="https://github.com/ripperhe/Bob">Bob</a>， 非 MAC 用户使用插件： <a href="https://github.com/openai-translator/openai-translator">openai-translator</a></li><li><a href="https://immersivetranslate.com/">Immersive Translate</a></li></ul><p>ios 版本可以选择 appsore 安装，也可通过扩展工具 Stay\injectscript 等安装，功能是一样的。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="翻译" scheme="https://wangqifei.eu.org/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Storm Sniffer的功能解锁</title>
