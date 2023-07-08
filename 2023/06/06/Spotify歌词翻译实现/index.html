@@ -14,7 +14,7 @@
 <meta property="og:description" content="实现步骤： ·注册百度翻译个人开发者，然后申请百度翻译的 appid 和 key。接下来要在脚本文件里使用。建议申请高级版，标准版可能不够用。 使用网络工具配置 mitm 域名：1hostname &#x3D;spclient.wg.spotify.com 使用网络工具配置脚本文件（注意将其中的 appid 和 securityKey 替换为自己的），不同软件配置不同参考以下内容：1http-respons">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-06T09:08:43.000Z">
-<meta property="article:modified_time" content="2023-06-06T09:10:33.757Z">
+<meta property="article:modified_time" content="2023-07-08T06:35:21.918Z">
 <meta property="article:author" content="Wangqifei">
 <meta property="article:tag" content="Spotify">
 <meta name="twitter:card" content="summary">
@@ -136,7 +136,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">实现步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spotify-%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91-api-%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.</span> <span class="toc-text">Spotify 歌词翻译使用百度翻译 api 的几点注意事项</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">实现步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%89%88%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">插件版：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spotify-%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91-api-%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">Spotify 歌词翻译使用百度翻译 api 的几点注意事项</span></a></li></ol>
       </div>
     
   </span>
@@ -163,7 +163,7 @@
       
         <time datetime="2023-06-06T09:08:43.000Z" class="dt-published" itemprop="datePublished">2023-06-06</time>
         
-        (Updated: <time datetime="2023-06-06T09:10:33.757Z" class="dt-updated" itemprop="dateModified">2023-06-06</time>)
+        (Updated: <time datetime="2023-07-08T06:35:21.918Z" class="dt-updated" itemprop="dateModified">2023-07-08</time>)
         
       
     </div>
@@ -190,6 +190,12 @@
 </ul>
 <p><strong>开启 mitm 和脚本即可正常使用</strong></p>
 <p>#脚本来源 app2smile</p>
+<h2 id="插件版："><a href="#插件版：" class="headerlink" title="插件版："></a>插件版：</h2><p>plugin:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!name= spotify 歌词</span></span><br><span class="line"><span class="comment">#!desc= 显示翻译按钮，手动翻译，不能随歌词滚动翻译。换行翻译。</span></span><br><span class="line">[Mitm]</span><br><span class="line">hostname =spclient.wg.spotify.com</span><br><span class="line"></span><br><span class="line">[Script]</span><br><span class="line">http-response ^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/ script-path=[https://raw.githubusercontent.com/fqw000/tools/main/s](https://raw.githubusercontent.com/fqw000/tools/main/rule/liby.list)cript/spotifylyric.js, requires-body=<span class="literal">true</span>, binary-body-mode=<span class="literal">true</span>, <span class="built_in">timeout</span>=10, tag=Spotify歌词翻译, argument=appid=xx&amp;securityKey=xxx</span><br></pre></td></tr></table></figure>
+
+<p>sgmodule:</p>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!name= spotify 歌词</span></span><br><span class="line"><span class="meta">#!desc= 显示翻译按钮，手动翻译，不能随歌词滚动翻译。换行翻译。</span></span><br><span class="line">[MITM]</span><br><span class="line">hostname = %APPEND% spclient.wg.spotify.com</span><br><span class="line">[Script]</span><br><span class="line"># 可调整为本地插件，修改下方argument中的appid和securityKey,填入自己的appid和密钥</span><br><span class="line"># 旧版自动随歌词滚动显示，原歌词同行显示，使用这个脚本： https:<span class="comment">//raw.githubusercontent.com/fqw000/tools/main/script/spotifyLyricBak.js</span></span><br><span class="line">spotify歌词翻译 = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/,requires-<span class="keyword">body</span>=<span class="number">1</span>,binary-<span class="keyword">body</span>-mode=<span class="number">1</span>,max-size=<span class="number">0</span>,script-path=https:<span class="comment">//raw.githubusercontent.com/app2smile/rules/master/js/spotify-lyric.js,argument=appid=XXX&amp;securityKey=XXX</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="Spotify-歌词翻译使用百度翻译-api-的几点注意事项"><a href="#Spotify-歌词翻译使用百度翻译-api-的几点注意事项" class="headerlink" title="Spotify 歌词翻译使用百度翻译 api 的几点注意事项"></a>Spotify 歌词翻译使用百度翻译 api 的几点注意事项</h2><p>这两天发了 spotify 歌词翻译以后，部分网友私信协助其进行了配置，因为私信较多，可能在私信的过程中部分网友收到的代码里包含了我的百度翻译 api。今天发现欠费了……所以想给大家一些提示：</p>
 <ul>
 <li>流量<blockquote>
@@ -228,7 +234,7 @@
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">实现步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spotify-%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91-api-%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.</span> <span class="toc-text">Spotify 歌词翻译使用百度翻译 api 的几点注意事项</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">实现步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%89%88%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">插件版：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spotify-%E6%AD%8C%E8%AF%8D%E7%BF%BB%E8%AF%91%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91-api-%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">Spotify 歌词翻译使用百度翻译 api 的几点注意事项</span></a></li></ol>
       </div>
     
 
