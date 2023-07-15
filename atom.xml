@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-07-14T02:58:59.006Z</updated>
+  <updated>2023-07-15T06:07:41.419Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在用观影软件推荐及广告屏蔽实现</title>
+    <link href="https://wangqifei.eu.org/2023/07/15/%E5%9C%A8%E7%94%A8%E8%A7%82%E5%BD%B1%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%E5%8F%8A%E5%B9%BF%E5%91%8A%E5%B1%8F%E8%94%BD%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://wangqifei.eu.org/2023/07/15/%E5%9C%A8%E7%94%A8%E8%A7%82%E5%BD%B1%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%E5%8F%8A%E5%B9%BF%E5%91%8A%E5%B1%8F%E8%94%BD%E5%AE%9E%E7%8E%B0/</id>
+    <published>2023-07-15T04:00:30.000Z</published>
+    <updated>2023-07-15T06:07:41.419Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="在用的几个不错的观影软件"><a href="#在用的几个不错的观影软件" class="headerlink" title="在用的几个不错的观影软件"></a>在用的几个不错的观影软件</h2><pre><code>- NETFLIX- HDO BOX- Tea TV- ODC- TvBox</code></pre><h2 id="NETFLIX"><a href="#NETFLIX" class="headerlink" title="NETFLIX"></a>NETFLIX</h2><p>奈飞 就不用过多介绍了，自购账号或者自己组个车，是最佳的选择，也是最为推荐的。</p><p>支持 android\ios\macos\网页\TV 端。</p><p>需要解锁网络，对节点有要求。最近苹果调税了，不过还是推荐土区订阅再换区。</p><p>付费观看，无广告</p><h2 id="HDO-BOX"><a href="#HDO-BOX" class="headerlink" title="HDO BOX"></a>HDO BOX</h2><p>HDO BOX 一款聚合影视应用，聚合了 netflix \ apple tv \ prime video \ hulu \ disney+ \ HBO \ AMC \PParamounl+ 等内容的影视平台。</p><p>需要解锁网络，支持 andorid \ ios（自签\伪装上架）\ tv 端体验不佳</p><p>有广告，附去广告配置：</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># &gt; hdo <span class="type">box</span> 去广告</span><br><span class="line"><span class="keyword">DOMAIN</span>-SUFFIX,applovin.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-SUFFIX,applvn.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-SUFFIX,doubleclick.net</span><br><span class="line"><span class="keyword">DOMAIN</span>-SUFFIX,vungle.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-SUFFIX,adcolony.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-SUFFIX,unity3d.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-KEYWORD,addthis.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-KEYWORD,vungle.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-KEYWORD,rayjump.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-SUFFIX,analytics.dspunion.com</span><br><span class="line"><span class="keyword">DOMAIN</span>-SUFFIX,inappcheck.itunes.apple.com</span><br></pre></td></tr></table></figure><h2 id="Tea-TV"><a href="#Tea-TV" class="headerlink" title="Tea TV"></a>Tea TV</h2><p>类似 hdo box 的一款聚合应用。</p><p>需要解锁网络。支持 android \ ios \ tv \ windows</p><p>TV 端需要配合播放器使用，默认 TPlayer,有广告.附去广告规则：</p><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># &gt; Tplayer播放器</span></span><br><span class="line">DOMAIN-<span class="function"><span class="keyword">KEYWORD</span>,<span class="title">unity3d</span></span></span><br><span class="line"><span class="function"><span class="title">DOMAIN</span>-<span class="title">KEYWORD</span>,<span class="title">applvn</span></span></span><br></pre></td></tr></table></figure><h2 id="ODC"><a href="#ODC" class="headerlink" title="ODC"></a>ODC</h2><p>ondemandchina 一款华人影视，质量非常棒，页面简洁、无广告，给人感觉很舒服。</p><p>目前锁区，需要北美 ip 访问，解锁网络时请注意。支持 andorid \ ios \ Tv \ 网页</p><p>无广告</p><h3 id="TvBox"><a href="#TvBox" class="headerlink" title="TvBox"></a>TvBox</h3><p>开源影视聚合软件，需要自定义软件源，目前衍生的版本有很多，体验感比较好的时小苹果（仿版比较多），国产影视聚合工具良心的不多，使用时自行甄选吧。</p><p>支持影视付费，只要有所值。毕竟：</p><blockquote><p>免费的都是产品，付费的才是用户。</p></blockquote><p>另外推荐几个目前还不错的影视相关站点：</p><p><a href="https://www.dubokuz.com/">独 播 库</a> &#x2F; <a href="https://awwrated.com/zh-tw/netflix">awwrated - 剧荒时逛逛</a> &#x2F; <a href="https://subhd.tv/">字 幕 下 载</a></p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="去广告" scheme="https://wangqifei.eu.org/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A/"/>
+    
+    <category term="影视" scheme="https://wangqifei.eu.org/tags/%E5%BD%B1%E8%A7%86/"/>
+    
+  </entry>
   
   <entry>
     <title>下载tikTok和抖音音频、视频的捷径</title>
