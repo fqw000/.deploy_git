@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-07-15T06:07:41.419Z</updated>
+  <updated>2023-08-15T06:30:05.906Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ventura 13.1 频繁提示 后台项目 已添加 解决方案</title>
+    <link href="https://wangqifei.eu.org/2023/08/15/Ventura-13-1-%E9%A2%91%E7%B9%81%E6%8F%90%E7%A4%BA-%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE-%E5%B7%B2%E6%B7%BB%E5%8A%A0-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://wangqifei.eu.org/2023/08/15/Ventura-13-1-%E9%A2%91%E7%B9%81%E6%8F%90%E7%A4%BA-%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE-%E5%B7%B2%E6%B7%BB%E5%8A%A0-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2023-08-15T06:24:55.000Z</published>
+    <updated>2023-08-15T06:30:05.906Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ventura 13.1 在使用过程中频繁提示“后台项目已添加”的通知，只是在尝试进行添加，并未添加成功，却频繁的提示，并不能彻底关闭。</p><h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p>清空登录项数据</p><p>终端命令:</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sfltool resetbtm</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="mac" scheme="https://wangqifei.eu.org/tags/mac/"/>
+    
+  </entry>
   
   <entry>
     <title>在用观影软件推荐及广告屏蔽实现</title>
