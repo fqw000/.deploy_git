@@ -5,12 +5,18 @@
     
     <entry>
       <title>iso andorid windows mac TV 观看IPTV的解决方案</title>
-      <link href="/2023/09/19/iso-andorid-windows-mac-TV/"/>
-      <url>/2023/09/19/iso-andorid-windows-mac-TV/</url>
+      <link href="/2023/09/19/iso-andorid-windows-mac-TV-%E8%A7%82%E7%9C%8BIPTV%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+      <url>/2023/09/19/iso-andorid-windows-mac-TV-%E8%A7%82%E7%9C%8BIPTV%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
       
-        <content type="html"><![CDATA[<h2 id="IPTV"><a href="#IPTV" class="headerlink" title="IPTV"></a>IPTV</h2><p>就是解决看电视频道的需求，实现步骤分两步：</p><ul><li>找到电视频道的可用的直播源文件，一般是m3u、m3u8格式，网络搜索或者自己抓包按格式编写均可；</li><li>找到一个合适的播放器打开直播预源文件即可。</li></ul><h2 id="直播源"><a href="#直播源" class="headerlink" title="直播源"></a>直播源</h2><p>网上有很多直播源，有一些是iptv抓包的数据，质量不一。<br>一个近来相对稳定的直播源：<a href="https://live.fanmingming.com/"> fanmignming </a> ，速度不错，源地址时常更新。</p><p>KODI中文网也有m3u文件推荐。</p><h2 id="播放软件"><a href="#播放软件" class="headerlink" title="播放软件"></a>播放软件</h2><p>ios : ntPlayer（个人推荐）、VLC、kodi(需要侧载)等<br>andorid: KODI (个人推荐)、 IPTVpro、vlc等<br>windows:PotPlayer（个人推荐）、KODI、vlc等<br>mac:ntPlyaer(没错store里可以下载iphone版能正常使用)、vlc、kodi等<br>Android TV：kodi(个人推荐，可设置启动页面为电视自动播放)，TV端还有个 秒看TV的APP自带源速度也不错，注意不要下载到修改版本（有购物频道）注意甄别。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="IPTV"><a href="#IPTV" class="headerlink" title="IPTV"></a>IPTV</h2><p>就是解决看电视频道的需求，实现步骤分两步：</p><ul><li>找到电视频道的可用的直播源文件，一般是 m3u、m3u8 格式，网络搜索或者自己抓包按格式编写均可；</li><li>找到一个合适的播放器打开直播预源文件即可。</li></ul><h2 id="直播源"><a href="#直播源" class="headerlink" title="直播源"></a>直播源</h2><p>网上有很多直播源，有一些是 iptv 抓包的数据，质量不一。<br>一个近来相对稳定的直播源：<a href="https://live.fanmingming.com/"> fanmignming </a> ，速度不错，源地址时常更新。</p><p>KODI 中文网也有 m3u 文件推荐。</p><h2 id="播放软件"><a href="#播放软件" class="headerlink" title="播放软件"></a>播放软件</h2><p>ios : ntPlayer（个人推荐）、VLC、kodi(需要侧载)等<br>andorid: KODI (个人推荐)、 IPTVpro、vlc 等<br>windows:PotPlayer（个人推荐）、KODI、vlc 等<br>mac:ntPlyaer(没错 store 里可以下载 iphone 版能正常使用)、vlc、kodi 等<br>Android TV：kodi(个人推荐，可设置启动页面为电视自动播放)，TV 端还有个 秒看 TV 的 APP 自带源速度也不错，注意不要下载到修改版本（有购物频道）注意甄别。</p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> iptv </tag>
+            
+        </tags>
       
     </entry>
     
