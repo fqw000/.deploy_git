@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-10-02T09:51:03.504Z</updated>
+  <updated>2023-10-02T10:59:05.037Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://wangqifei.eu.org/2023/10/02/AppleStore%E5%86%85%E8%B4%AD%E7%A0%B4%E8%A7%A3%E7%9A%84%E4%B8%80%E7%A7%8D%E6%80%9D%E8%B7%AF/"/>
     <id>https://wangqifei.eu.org/2023/10/02/AppleStore%E5%86%85%E8%B4%AD%E7%A0%B4%E8%A7%A3%E7%9A%84%E4%B8%80%E7%A7%8D%E6%80%9D%E8%B7%AF/</id>
     <published>2023-10-02T09:35:47.000Z</published>
-    <updated>2023-10-02T09:51:03.504Z</updated>
+    <updated>2023-10-02T10:59:05.037Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="此前，采用过提起-adbk-文件还原应用，再利用-imzaing-导出应用程序备份文件可以在不能安装-TrollStore-的设备上通过还原此备份文件，实现内购破解。"><a href="#此前，采用过提起-adbk-文件还原应用，再利用-imzaing-导出应用程序备份文件可以在不能安装-TrollStore-的设备上通过还原此备份文件，实现内购破解。" class="headerlink" title="此前，采用过提起 adbk 文件还原应用，再利用 imzaing 导出应用程序备份文件可以在不能安装 TrollStore 的设备上通过还原此备份文件，实现内购破解。"></a>此前，采用过提起 adbk 文件还原应用，再利用 imzaing 导出应用程序备份文件可以在不能安装 TrollStore 的设备上通过还原此备份文件，实现内购破解。</h3><p>今天在折腾 APtv 这个应用时发现，破解脚本在 1.2.6 上已经不能使用了，作者在新版本中禁止了 Mitm。<br>于是通过以下方式实现了 APtv 的内购破解“</p><h3 id="需要准备"><a href="#需要准备" class="headerlink" title="需要准备"></a>需要准备</h3><ul><li>一个已经购买过 APtv 的 appleid（大多数来源于共享账号）</li><li>一个自己常用的 appleid</li><li>手机上开启 icloud</li></ul><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ul><li>AppStore 登录购买过 APtv 的 appleid,下载 Aptv，此时 APtv 是 pro 状态</li><li>设置里打开 icloud,同步 Aptv 数据到该 icloud</li><li>对 aptv 做简单配置，填写一些源，以便 aptv 的应用数据能同步到 cloud，稍等片刻，确保已同步。</li><li>卸载 Aptv 后重新安装，再次打开如果发现前面配置的数据自动同步显示了，就可以再次卸载 Aptv 了。</li><li>退出 Appleid，登录自己常用的 appleid</li><li>下载 Aptv，打开等待 icloud 数据同步数据过来</li><li>未内购过的这个 Appleid 下载的 aptv 也是 pro 状态了，并且可以正常升级。</li></ul><h3 id="主要是采用-icloud-同步应用数据到-icloud-账户下，再次下载应用时-icloud-上的该应用数据包含内购信息能够正常同步到-APP，实现内购破解。"><a href="#主要是采用-icloud-同步应用数据到-icloud-账户下，再次下载应用时-icloud-上的该应用数据包含内购信息能够正常同步到-APP，实现内购破解。" class="headerlink" title="主要是采用 icloud 同步应用数据到 icloud 账户下，再次下载应用时 icloud 上的该应用数据包含内购信息能够正常同步到 APP，实现内购破解。"></a>主要是采用 icloud 同步应用数据到 icloud 账户下，再次下载应用时 icloud 上的该应用数据包含内购信息能够正常同步到 APP，实现内购破解。</h3><p>同理，部分其他 APP 同样可以采用此方式实现内购破解。等待更多测试，已确定具体机制。</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="此前，采用过提起-adbk-文件还原应用，再利用-imzaing-导出应用程序备份文件可以在不能安装-TrollStore-的设备上通过还原此备份文件，实现内购破解。"><a href="#此前，采用过提起-adbk-文件还原应用，再利用-imzaing-导出应用程序备份文件可以在不能安装-TrollStore-的设备上通过还原此备份文件，实现内购破解。" class="headerlink" title="此前，采用过提起 adbk 文件还原应用，再利用 imzaing 导出应用程序备份文件可以在不能安装 TrollStore 的设备上通过还原此备份文件，实现内购破解。"></a>此前，采用过提起 adbk 文件还原应用，再利用 imzaing 导出应用程序备份文件可以在不能安装 TrollStore 的设备上通过还原此备份文件，实现内购破解。</h3><p>今天在折腾 APtv 这个应用时发现，破解脚本在 1.2.6 上已经不能使用了，作者在新版本中禁止了 Mitm。<br>于是通过以下方式实现了 APtv 的内购破解“</p><h3 id="需要准备"><a href="#需要准备" class="headerlink" title="需要准备"></a>需要准备</h3><ul><li>一个已经购买过 APtv 的 appleid（大多数来源于共享账号）</li><li>一个自己常用的 appleid</li><li>手机上开启 icloud</li></ul><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ul><li>AppStore 登录购买过 APtv 的 appleid,下载 Aptv，此时 APtv 是 pro 状态</li><li>设置里打开 icloud,同步 Aptv 数据到该 icloud</li><li>对 aptv 做简单配置，填写一些源，以便 aptv 的应用数据能同步到 cloud，稍等片刻，确保已同步。</li><li>卸载 Aptv 后重新安装，再次打开如果发现前面配置的数据自动同步显示了，就可以再次卸载 Aptv 了。</li><li>退出 Appleid，登录自己常用的 appleid</li><li>下载 Aptv，打开等待 icloud 数据同步数据过来</li><li>未内购过的这个 Appleid 下载的 aptv 也是 pro 状态了，并且可以正常升级。</li></ul><h3 id="主要是采用-icloud-同步应用数据到-icloud-账户下，再次下载应用时-icloud-上的该应用数据包含内购信息能够正常同步到-APP，实现内购破解。"><a href="#主要是采用-icloud-同步应用数据到-icloud-账户下，再次下载应用时-icloud-上的该应用数据包含内购信息能够正常同步到-APP，实现内购破解。" class="headerlink" title="主要是采用 icloud 同步应用数据到 icloud 账户下，再次下载应用时 icloud 上的该应用数据包含内购信息能够正常同步到 APP，实现内购破解。"></a>主要是采用 icloud 同步应用数据到 icloud 账户下，再次下载应用时 icloud 上的该应用数据包含内购信息能够正常同步到 APP，实现内购破解。</h3><p>同理，部分其他 APP 同样可以采用此方式实现内购破解。等待更多测试，已确定具体机制。</p><p>突然理解到：所有支持使用脚本 一 次 性 解 锁 的软件都可以采用这个方法。</p>]]></content>
     
     
       
