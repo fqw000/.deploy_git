@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-10-17T10:35:03.600Z</updated>
+  <updated>2023-10-21T08:29:59.653Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Surge For Mac 破解</title>
+    <link href="https://wangqifei.eu.org/2023/10/21/Surge-For-Mac-%E7%A0%B4%E8%A7%A3/"/>
+    <id>https://wangqifei.eu.org/2023/10/21/Surge-For-Mac-%E7%A0%B4%E8%A7%A3/</id>
+    <published>2023-10-21T08:08:45.000Z</published>
+    <updated>2023-10-21T08:29:59.653Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SurgeForMac-脚本注入"><a href="#SurgeForMac-脚本注入" class="headerlink" title="SurgeForMac 脚本注入"></a>SurgeForMac 脚本注入</h2><p>来源 - -「 <a href="https://github.com/QiuChenlyOpenSource/InjectLib">InjectLib-QiuChen</a> 」</p><h4 id="以下软件通杀，且不需要关闭-SIP-使用。"><a href="#以下软件通杀，且不需要关闭-SIP-使用。" class="headerlink" title="以下软件通杀，且不需要关闭 SIP 使用。"></a>以下软件通杀，且不需要关闭 SIP 使用。</h4><ul><li>iShot</li><li>InfusePro</li><li>Surge5</li><li>Paste</li><li>ProxyMan</li><li>Parallels Desktop</li><li>Adobe</li></ul><p>「 <a href="https://github.com/QiuChenlyOpenSource/InjectLib/archive/refs/heads/main.zip">下 载 聚 合 脚 本</a> 」</p><ul><li>点击 原神_启动.command 启动脚本，自动检测已安装的应用，在支持的软件提示是否注入，注入即可实现破解。</li><li>运行前 终端 要有足够的权限<ul><li>设置 - 隐私与安全 - 开发者工具 &#x2F; app 管理 - 打开终端-重启终端</li></ul></li><li>注意卸载 surge5 重新安装的步骤<ul><li>先在 surge 里卸载 Helper 帮助程序</li><li>再使用卸载工具完整卸载 surge5</li></ul></li><li>破解之后 Surge5 的模块功能不不能正常 url 添加新模块，需要手动添加。<ul><li>在配置目录下保存模块文件即可</li></ul></li><li>建议将 Surge5 的配置文件路径进行修改。</li></ul>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="SurgeForMac" scheme="https://wangqifei.eu.org/tags/SurgeForMac/"/>
+    
+    <category term="破解" scheme="https://wangqifei.eu.org/tags/%E7%A0%B4%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>Javascript笔记</title>
