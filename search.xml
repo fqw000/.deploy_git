@@ -4,6 +4,40 @@
   
     
     <entry>
+      <title>小狼毫在win下使用的异常处理</title>
+      <link href="/2023/10/28/%E5%B0%8F%E7%8B%BC%E6%AF%AB%E5%9C%A8win%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
+      <url>/2023/10/28/%E5%B0%8F%E7%8B%BC%E6%AF%AB%E5%9C%A8win%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="小狼毫在-win-下使用的异常处理"><a href="#小狼毫在-win-下使用的异常处理" class="headerlink" title="小狼毫在 win 下使用的异常处理"></a><center>小狼毫在 win 下使用的异常处理</center></h1><p>小狼毫 v0.15.0.0 版本在 win10 下使用时会经常卡死不能切换中文书法，输入英文。<br>以下是解决方案：</p><blockquote><p>重启 weaseiserver<br>写了个 bat 脚本文件，保存桌面在卡死时执行就行。了。<br>小狼毫修复.bat</p></blockquote><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start C:\<span class="string">&quot;Program Files (x86)&quot;</span>\Rime\weasel-<span class="number">0.15</span>.<span class="number">0</span>\WeaselServer.exe</span><br><span class="line">echo <span class="string">&quot;修复完成&quot;</span></span><br><span class="line">timeout /t <span class="number">1</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure><p>自从写了这个脚本以后，再也没出现过卡死的情况。玄学！</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 输入法 </tag>
+            
+            <tag> 小狼毫 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>win与mac之间的文件共享</title>
+      <link href="/2023/10/28/win%E4%B8%8Emac%E4%B9%8B%E9%97%B4%E7%9A%84%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/"/>
+      <url>/2023/10/28/win%E4%B8%8Emac%E4%B9%8B%E9%97%B4%E7%9A%84%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</url>
+      
+        <content type="html"><![CDATA[<h1 id="win-与-mac-之间的文件共享"><a href="#win-与-mac-之间的文件共享" class="headerlink" title="win 与 mac 之间的文件共享"></a>win 与 mac 之间的文件共享</h1><p>前期的文件共享主要是使用 ftp 用于不同设备之间的相互文件访问，但是固定的网络环境里会有跨网段的设备，这样使用 ftp 的过程中就异常的繁琐。<br>目前主要使用的是 smb 方案。<br>smb 很好的解决这个问题，几乎不需要额外的配置，跨平台和兼容性都很好。<br>一个使用场景是：wifi 网络和有线网络之间的跨网段访问。</p><h2 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h2><p>FTP 的优点：</p><ul><li>跨平台支持<br>FTP 是一种跨平台的协议，几乎可以在任何操作系统上进行文件传输和共享。</li><li>简单易用<br>FTP 协议相对简单，有许多客户端和服务器软件提供了用户友好的界面，易于配置和使用。</li><li>大文件传输<br>FTP 对大文件的传输支持较好，可以处理大容量文件的上传和下载。 -匿名访问<br>FTP 支持匿名访问，允许用户使用匿名账户进行文件下载。<br>FTP 的劣势：</li><li>安全性较低<br>FTP 传输的数据未加密，存在安全风险，容易受到中间人攻击和数据泄露的威胁。</li><li>防火墙设置<br>FTP 使用多个端口进行数据传输，需要在防火墙上进行额外的配置以允许数据传输。</li><li>相对复杂的配置<br>一些高级功能和配置可能需要更多的设置和管理。</li></ul><h2 id="SMB"><a href="#SMB" class="headerlink" title="SMB"></a>SMB</h2><p>SMB 的优点</p><ul><li><p>Windows 集成<br>SMB 是 Windows 操作系统标准的文件共享协议，与 Windows 集成良好，可以方便地在 Windows 网络中共享文件和打印机。</p></li><li><p>访问控制<br>SMB 支持对共享资源进行细粒度的访问控制和权限管理，可以根据用户和用户组控制文件的访问权限。</p></li><li><p>文件和打印机共享<br>SMB 支持同时共享文件和打印机，方便多用户访问和打印。<br>SMB 的劣势：</p></li><li><p>跨平台兼容性<br>SMB 在非 Windows 平台上的兼容性相对较差，可能需要额外的配置和软件来实现与其他操作系统的共享。</p></li><li><p>复杂性<br>SMB 协议相对复杂，需要较多的配置和管理，尤其是在大型网络环境中。</p></li></ul><p>SMB 协议在设计时考虑了跨网段通信的需求，它是基于 TCP&#x2F;IP 协议栈的应用层协议。SMB 协议使用 TCP 作为传输协议，并利用 TCP 的可靠性和连接性来实现跨网段的数据传输。TCP 协议负责将数据分割成小的数据包，并在发送和接收之间建立可靠的连接。</p><p>与此不同，FTP 协议在设计时并没有直接考虑跨网段通信的需求。FTP 协议使用两个独立的连接：控制连接和数据连接。控制连接用于发送命令和控制信息，而数据连接用于实际的文件传输。FTP 协议在建立数据连接时使用了动态端口，这可能导致跨网段通信时的问题。</p><p>当 FTP 客户端和服务器位于不同的网段时，由于网络地址转换（NAT）和防火墙的存在，FTP 的数据连接可能会受到限制。NAT 和防火墙可能会阻止动态端口的打开和传输，导致 FTP 无法在跨网段的情况下正常工作。此外，FTP 的数据连接也没有内置的可靠性机制。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>360T7升级openwert</title>
       <link href="/2023/10/27/360T7%E5%8D%87%E7%BA%A7openwert/"/>
       <url>/2023/10/27/360T7%E5%8D%87%E7%BA%A7openwert/</url>
@@ -54,9 +88,9 @@
             
             <tag> Spotify </tag>
             
-            <tag> 破解 </tag>
-            
             <tag> Mac </tag>
+            
+            <tag> 破解 </tag>
             
         </tags>
       
@@ -75,9 +109,9 @@
       
         <tags>
             
-            <tag> SurgeForMac </tag>
-            
             <tag> 破解 </tag>
+            
+            <tag> SurgeForMac </tag>
             
         </tags>
       
@@ -250,9 +284,9 @@
       
         <tags>
             
-            <tag> 下载 </tag>
-            
             <tag> 捷径 </tag>
+            
+            <tag> 下载 </tag>
             
         </tags>
       
@@ -487,25 +521,6 @@
         <tags>
             
             <tag> windows </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>360T7刷OpenWrt</title>
-      <link href="/2023/06/08/360T7%E5%88%B7OpenWrt/"/>
-      <url>/2023/06/08/360T7%E5%88%B7OpenWrt/</url>
-      
-        <content type="html"><![CDATA[<p>使用 360T7 刷入 openwrt 系统，主要借助 openclash、adguradhome 实现 <del>科 学 上 网</del>和 DNS 去广告。手搓了一份 clsh 的配置文件，但是配置中发现 openclash 不支持 reality，改用了 passwall。</p><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a><strong>准备</strong></h2><table><thead><tr><th>360T7</th><th></th></tr></thead><tbody><tr><td>windows 电脑</td><td>本操作均是基于 window 端</td></tr><tr><td>usb 转 ttl 工具</td><td>CH340 即可，电商网站很多</td></tr><tr><td>杜邦线+网线</td><td></td></tr><tr><td>uboot</td><td><a href="https://github.com/fqw000/360T7/releases/download/openwrt/mt7981_360t7-fip-fixed-parts-uboot.bin">108m 的 uboot</a> \ <a href="https://cmi.hanwckf.top/p/360t7-firmware/">来源</a></td></tr><tr><td>openwrt 固件</td><td><a href="https://github.com/fqw000/360T7/releases/download/openwrt/360t7.chajian-openwrt.zip">固件下载</a> \ <a href="https://www.right.com.cn/forum/thread-8263340-1-1.html">来源</a></td></tr><tr><td>串口调试助手</td><td>MicrosoftStore \ <a href="https://github.com/fqw000/360T7/releases/download/openwrt/chuankoutiaoshiyilai-Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x86__.appx">依赖</a> 、 <a href="https://github.com/fqw000/360T7/releases/download/openwrt/chuankoutiaoshiyilai-Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x86__.appx">依赖</a> 、 <a href="https://github.com/fqw000/360T7/releases/download/openwrt/chuankoutiaoshizhushou-lingguang.8.0.1.0.msixbundle">串口调试助手</a></td></tr><tr><td>termius</td><td>telnet 工具都可以</td></tr></tbody></table><p><em>部分没有 microsoftstore 的版本比如企业版，使用抓包的.appx 和.msixbundle 安装串口调试助手</em> <a href="../%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AAMicrosoftStore%E6%8A%93%E5%8C%85%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/">推荐一个 MicrosoftStore 抓包下载的在线工具</a></p><h2 id="拆机"><a href="#拆机" class="headerlink" title="拆机"></a><strong>拆机</strong></h2><p>网上流传很多拆机教程，图文的、视频的都有自行参考吧<br> 以下是拆机的关键点：</p><ul><li>贴纸覆盖下的两颗十字螺丝拆解。想保护贴纸的就用风枪或者吹风机吹下把贴纸私下里。</li><li>准备一张废弃的塑料卡片（比如：过期的信用卡、会员卡），从底部中央插入，想一侧滑动，碰到卡口向上撬卡，使上盖向外，下盖向里滑动，依次撬开四个角和两侧的卡口，正上方的两个卡口不好撬，其实不用撬，以顶为轴心从底部上掀上盖，正上方两卡口即可脱落</li><li>绞和方式为底盖卡牙靠外侧向内扣紧上盖卡扣，上盖卡扣靠内测。</li><li>基本都能无损不断扣拆解</li></ul><h2 id="failsafe-模式下开启-telnet"><a href="#failsafe-模式下开启-telnet" class="headerlink" title="failsafe 模式下开启 telnet"></a><strong>failsafe 模式下开启 telnet</strong></h2><ul><li>使用 usb 转 ttl 工具+杜邦线接线：路由 RXD 连接 ttl 工具的 TXD、TXD 连接 RXD、GND 连接 GND.底座朝下，主板由下方三个节点自下而上依次为 RXD、TXD、GND。<br>注意观察路由主板，三个圆孔一个方孔，三个圆孔没有走线的孔（与方孔相临）为 GND,紧挨着 GND 有走线的一个圆孔为 TXD,另外一个圆孔则是 RXD。</li><li>打开串口调试助手,串口号选择插入 COM 口设备，波特率选择到 115200，然后选择连接。</li><li>路由器接通电源，调试助手右侧开始日志开始显示，不停的输入 f+回车 发送，直至显示进入 failsafe 模式。</li><li>依次执行以下命令<br>&amp;darr; 开启 uboot 控制台菜单<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fw_setenv</span> bootmenu_delay <span class="number">3</span></span><br></pre></td></tr></table></figure>&amp;darr;挂载 rootfs 并开启 telnet<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mount_root</span><br><span class="line">sed -i <span class="string">&#x27;s/.*local debug=.*/\tlocal debug=1/&#x27;</span> <span class="regexp">/etc/i</span>nit.d/telnet</span><br></pre></td></tr></table></figure>&amp;darr;修改 root 密码为 password<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">passwd root</span><br><span class="line"><span class="keyword">password</span></span><br><span class="line"><span class="keyword">password</span></span><br></pre></td></tr></table></figure>&amp;darr;重启<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">reboot</span></span><br></pre></td></tr></table></figure></li></ul><h2 id="刷入-uboot"><a href="#刷入-uboot" class="headerlink" title="刷入 uboot"></a><strong>刷入 uboot</strong></h2><ul><li>路由重启后，进入并配置路由，确保路由能够联网（如果需要从网络下载 uboot 文件，你也可以将 uboot 文件使用 HSF、SCP 等方式直接上传到路由使用），原厂的 uboot 只能使用 36M，hanwckf 的可以使用 108M。</li><li>使用 termius 对路由器进行 telnet 连接，默认的后台地址是 192.168.2.1，用户名是 root，密码是 password（这就是上一步修改的密码）</li><li>将 uboot 写入 &#x2F;tmp&#x2F; 路径，将 360t7-fip-fixed-parts.bin 文件中的数据写入到 Linux 内核中名为 fip 的 MTD 设备分区中。当然你也可以使用 mtd 命令写入刚下载好的 uboot。</li></ul><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /tmp</span><br><span class="line">wget https://sebs.oss-<span class="keyword">cn</span>-shanghai.aliyuncs.<span class="keyword">com</span>/<span class="number">360</span>t7-fip-fixed-parts.bin</span><br><span class="line">mtd <span class="keyword">write</span> <span class="number">360</span>t7-fip-fixed-parts.bin fip</span><br></pre></td></tr></table></figure><h2 id="刷入-openwrt"><a href="#刷入-openwrt" class="headerlink" title="刷入 openwrt"></a><strong>刷入 openwrt</strong></h2><ul><li>进入 uboot<br>摁住路由 reset 按键，通电，持续 8 秒以上松开即可进入 reboot</li><li>uboot 没有 DHCP，所有需要使用网线将路由的 lan 口和电脑连接。<br>电脑端：<br>IP 手动设置为 192.168.1.2<br>子网掩码 255.255.255.0<br>网关设置 192.168.1.1<br>dns 也设置 192.168.1.1</li><li>浏览器打开 192.168.1.1 进入 uboot 管理页面，选择下载好的 openwrt 固件，注意文件格式需要为.bin 不能使压缩包</li><li>刷入完成后，自动重启进入 openwrt<br>默认后台是 192.168.6.1，用户名是 root，密码 password，默认的 Wi-Fi 名是 mtk 开头的，默认 Wi-Fi 没有密码</li></ul><h2 id="最后附上-360t7-的-原生固件备份"><a href="#最后附上-360t7-的-原生固件备份" class="headerlink" title="最后附上 360t7 的  原生固件备份 "></a>最后附上 360t7 的 <a href="https://github.com/fqw000/360T7/releases/download/openwrt/360T7-yuanshengrom-bak.7z"> 原生固件备份 </a></h2><h3 id="原厂固件分区表"><a href="#原厂固件分区表" class="headerlink" title="原厂固件分区表"></a>原厂固件分区表</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">0x000000000000</span>-<span class="number">0</span>x000000100000 : <span class="string">&quot;bl2&quot;</span></span><br><span class="line"><span class="attribute">0x000000100000</span>-<span class="number">0</span>x000000180000 : <span class="string">&quot;u-boot-env&quot;</span></span><br><span class="line"><span class="attribute">0x000000180000</span>-<span class="number">0</span>x000000380000 : <span class="string">&quot;Factory&quot;</span></span><br><span class="line"><span class="attribute">0x000000380000</span>-<span class="number">0</span>x000000580000 : <span class="string">&quot;fip&quot;</span></span><br><span class="line"><span class="attribute">0x000000580000</span>-<span class="number">0</span>x000002980000 : <span class="string">&quot;ubi&quot;</span></span><br><span class="line"><span class="attribute">0x000002980000</span>-<span class="number">0</span>x000004d80000 : <span class="string">&quot;firmware-1&quot;</span></span><br><span class="line"><span class="attribute">0x000004d80000</span>-<span class="number">0</span>x000007180000 : <span class="string">&quot;plugin&quot;</span></span><br><span class="line"><span class="attribute">0x000007180000</span>-<span class="number">0</span>x000007280000 : <span class="string">&quot;config&quot;</span></span><br><span class="line"><span class="attribute">0x000007280000</span>-<span class="number">0</span>x000007300000 : <span class="string">&quot;factory&quot;</span></span><br><span class="line"><span class="attribute">0x000007300000</span>-<span class="number">0</span>x000007a00000 : <span class="string">&quot;log&quot;</span></span><br></pre></td></tr></table></figure><blockquote><p>其中，Factory 为无线 EEPROM 分区；fip 为 uboot 分区；ubi 和 firmware-1 为固件分区，分别 36M，均为 ubi 格式；plugin 为原厂插件分区，有 36M，也是 ubi 格式；最后一个小写字母开头的 factory 分区为原厂固件信息分区，保存有机器编号，MAC 地址等信息。<br>原厂 uboot 在开机时会分别检查 ubi 和 firmware-1 分区内是否存在固件，如果某个分区未检查通过，则 uboot 会自动将另一个分区的内容复制过去。<br>因此，当使用原厂 uboot 启动时，只能使用一个 ubi 分区存放固件，固件总体积（含 kernel+rootfs+rootfs_data）将限制在 36M 内，但你仍然可以使用 plugin 分区（36M）存放其它数据<br> <a href="https://cmi.hanwckf.top/p/360t7-telnet-uboot-console/"> &gt;&gt;&gt;&gt;来源 </a></p></blockquote>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> openwrt </tag>
             
         </tags>
       
