@@ -14,7 +14,7 @@
 <meta property="og:description" content="房租计算器              body {             font-family: Arial, sans-serif;             background-color: #f5f5f5;         }          div {             color: #666;         }          .calculator {">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-02T10:30:50.467Z">
-<meta property="article:modified_time" content="2023-11-02T10:31:13.128Z">
+<meta property="article:modified_time" content="2023-11-13T07:37:28.834Z">
 <meta property="article:author" content="Wangqifei">
 <meta property="article:tag" content="王奇飞 wangqifei">
 <meta name="twitter:card" content="summary">
@@ -161,7 +161,7 @@
       
         <time datetime="2023-11-02T10:30:50.467Z" class="dt-published" itemprop="datePublished">2023-11-02</time>
         
-        (Updated: <time datetime="2023-11-02T10:31:13.128Z" class="dt-updated" itemprop="dateModified">2023-11-02</time>)
+        (Updated: <time datetime="2023-11-13T07:37:28.834Z" class="dt-updated" itemprop="dateModified">2023-11-13</time>)
         
       
     </div>
@@ -307,7 +307,7 @@
             var contractTotalCost = (rent * contractDays + (property + promotion) * contractDays / 30) * buildingArea;
             var reducedTotalCost = contractTotalCost - (discountDays * rent * buildingArea) - (freeDays * (rent + (property + promotion) / 30) * buildingArea);
             var costPer30Days = reducedTotalCost / contractDays * 30;
-            var monthlyRentStandard = costPer30Days - property - promotion;
+            var monthlyRentStandard = costPer30Days / buildingArea - property - promotion;
 
             document.getElementById("result").innerHTML = "建筑面积：" + buildingArea.toFixed(2) + " m²" +
                 "<br>30天月费用标准：" + monthCostStandard.toFixed(2) + " 元/月/㎡" +
@@ -315,7 +315,7 @@
                 "<br>合同期总费用：" + contractTotalCost.toFixed(2) + " 元" +
                 "<br>减免后的总费用：" + reducedTotalCost.toFixed(2) + " 元" +
                 "<br>减免30天费用标准：" + costPer30Days.toFixed(2) + " 元/月/㎡" +
-                "<br>月租金标准：" + monthlyRentStandard.toFixed(2) + " 元/月/㎡";
+                "<br>减免后月租金标准：" + monthlyRentStandard.toFixed(2) + " 元/月/㎡";
         }
         function resetInputs() {
             var inputs = document.getElementsByTagName("input");
