@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-11-14T04:58:54.106Z</updated>
+  <updated>2023-11-23T07:22:36.703Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个通用去广告的重写</title>
+    <link href="https://wangqifei.eu.org/2023/11/23/%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E9%87%8D%E5%86%99/"/>
+    <id>https://wangqifei.eu.org/2023/11/23/%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%9A%84%E9%87%8D%E5%86%99/</id>
+    <published>2023-11-23T07:09:43.000Z</published>
+    <updated>2023-11-23T07:22:36.703Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一个通用去广告重写的正则规则"><a href="#一个通用去广告重写的正则规则" class="headerlink" title="一个通用去广告重写的正则规则"></a>一个通用去广告重写的正则规则</h2><p>最近在使用前期写的 555 影视广告时需要一个异常，脚本文件在 storm sniffer 、surge 和 loon 下都能生效，但是在 shadowrocket 下却不能完整的生效，于是就开始从头梳理了一遍，在调试的过程中，遇到一个 url 路径觉得很有意思，就完善了一个重写规则，后面发现能实现一部分应用的广告屏蔽，于是就完善了下正则表达式。<br>目前重写规则如下：<br><code>^https?:\/\/\S*\/(ad|ads|AD|ADS|adlist|adlists|advert|guanggao|ad-pattern|adview|adviews|ad-slot)\/\S*$ url reject</code></p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="广告屏蔽" scheme="https://wangqifei.eu.org/tags/%E5%B9%BF%E5%91%8A%E5%B1%8F%E8%94%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ios 半自动化的解决方案</title>
+    <link href="https://wangqifei.eu.org/2023/11/23/Ios-%E5%8D%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://wangqifei.eu.org/2023/11/23/Ios-%E5%8D%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2023-11-23T06:58:39.000Z</published>
+    <updated>2023-11-23T07:08:51.216Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Ios-自动化关于判断蓝牙条件下不能自动运行的解决方案"><a href="#Ios-自动化关于判断蓝牙条件下不能自动运行的解决方案" class="headerlink" title="Ios 自动化关于判断蓝牙条件下不能自动运行的解决方案"></a>Ios 自动化关于判断蓝牙条件下不能自动运行的解决方案</h2><p>最近突然发现 14 pro max 在 ios16.2 下配置了自动化以后并不能实现预期稳定的运行。主要实现目的是，连接到指定蓝牙以后自动打开 spotify 并播放。在 iphone13 ios15.4 下运行没有任何问题，但是在 16.2 上就出现了需要手动确认才能继续运行，使用蓝牙作为自动化的判断提条件是，捷径并没有关闭 运行前询问 的选项。后来到 apple 社区了解发现 wifi \ 蓝牙等一些条件目前并不能实现完全自动运行。</p><p>于是有了以下方案：</p><ol><li>手机连接蓝牙，并在设置-蓝牙 里修改蓝牙类型为 汽车音响</li><li>设置-专注模式-添加 驾驶模式，并在驾驶模式里设置 自动打开-激活-与车载蓝牙连接时</li><li>根据需要配置 驾驶模式 下的通知情况，不要影响信息的接收提醒，按需配置</li><li>捷径-自动化-使用驾驶模式作为判断条件就可以选择关闭 运行前询问 了，接下来配置打开 spotify-在 iphone 上播放。</li></ol>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="捷径" scheme="https://wangqifei.eu.org/tags/%E6%8D%B7%E5%BE%84/"/>
+    
+    <category term="ios" scheme="https://wangqifei.eu.org/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
