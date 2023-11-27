@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-11-23T07:22:36.703Z</updated>
+  <updated>2023-11-27T06:13:58.438Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iptv直播源的获取与使用</title>
+    <link href="https://wangqifei.eu.org/2023/11/27/iptv%E7%9B%B4%E6%92%AD%E6%BA%90%E7%9A%84%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
+    <id>https://wangqifei.eu.org/2023/11/27/iptv%E7%9B%B4%E6%92%AD%E6%BA%90%E7%9A%84%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-11-27T05:54:33.000Z</published>
+    <updated>2023-11-27T06:13:58.438Z</updated>
+    
+    <content type="html"><![CDATA[<p>伴随着 2023 年 9 月底，广电总局要求年底之前八成以上电视用户实现开机即可看电视的要求，电视生产企业没见多大动静，类似电视家这些民间的 iptv 相关的软件纷纷倒了，继而各类时常更新维护的 iptv 直播源也陆续关闭了。<br>直到近期我一直在使用的 fanmingming 的直播源也删库了，面临着无源可用的问题，于是拨打了联通客服电话，核实了下名下的 iptv,客服告知我 iptv 业务是开通状态，但是没开机，于是就琢磨着使用起来。</p><h2 id="运营商的-IPTV"><a href="#运营商的-IPTV" class="headerlink" title="运营商的 IPTV"></a>运营商的 IPTV</h2><p>关于运营商的 iptv，我想结合为数不多的实际使用体验吐槽下：</p><ol><li>目前在用的方案是联通的网络安装人员给我配置的 iptv，竟然使用宽带中分离的 iptv，这样导致了我的宽带上不了千兆。我需要把宽带和 iptv 分离。</li><li>iptv 的盒子真的有独立存在的必要吗？联通配置的 iptv 盒子和遥控器是华为定制的，我其实需要的是把 iptv 直接接入电视就好，其实两套遥控器还是很不方便的，尤其是父母使用。使用体验基本没体验。</li></ol><h2 id="以往日常-iptv-的实现方案："><a href="#以往日常-iptv-的实现方案：" class="headerlink" title="以往日常 iptv 的实现方案："></a>以往日常 iptv 的实现方案：</h2><ul><li>找一个靠谱的直播源。<br>需要稳定、低延迟、无广告。</li><li>一些优秀的可自定义直播源的客户端。<br>操作简便、学习成本低、UI 审美在线<br> 比如：<br> android&#x2F;TV：KODI、TVBOX、电视家（优化版）\vlc<br> IOS&#x2F;Mac&#x2F;appleTV:ntPlayer、aptv、vlc<br>如今需要解决的问题是寻找一个靠谱的直播源变的不太容易了，需要自己动手抓包日常维护了。</li></ul><h2 id="这里记录下如何抓包、生成直播源及后续日常维护。"><a href="#这里记录下如何抓包、生成直播源及后续日常维护。" class="headerlink" title="这里记录下如何抓包、生成直播源及后续日常维护。"></a>这里记录下如何抓包、生成直播源及后续日常维护。</h2>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="iptv" scheme="https://wangqifei.eu.org/tags/iptv/"/>
+    
+  </entry>
   
   <entry>
     <title>一个通用去广告的重写</title>
