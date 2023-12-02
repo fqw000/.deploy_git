@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2023-11-27T06:13:58.438Z</updated>
+  <updated>2023-12-02T04:54:51.683Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TrollStore2安装异常解决方案</title>
+    <link href="https://wangqifei.eu.org/2023/12/02/TrollStore2%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://wangqifei.eu.org/2023/12/02/TrollStore2%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2023-12-02T04:34:55.000Z</published>
+    <updated>2023-12-02T04:54:51.683Z</updated>
+    
+    <content type="html"><![CDATA[<p>设备信息：</p><ul><li>iphone14ProMax</li><li>ios 16.2</li><li>开发者模式已打开</li></ul><p>软件信息：</p><ul><li><a href="https://github.com/straight-tamago/misaka/releases/download/3.2.8/misaka-v3.2.8.ipa">Misaka 3.2.8 beta</a></li><li><a href="https://github.com/opa334/TrollStore/releases/download/2.0.8/PersistenceHelper_Embedded">PersistenceHelper_Embedded</a></li><li>Tips （Store 最新版）<br>异常：<br>[修改 Tips 提示软件后软件不能运行，出现闪退]<br>在使用 Misaka 正常安装的过程中，两种安装方式都不能成功：</li></ul><ol><li>点击 install trollstore 以后，Tips 打开一直闪退，删除重新安装 tips 重复步骤依然闪退。</li><li>fileManger-var-Containers-Bundle-Application-com.apple.tips-Tips.app-Tips - file overwrite ,选中 PersistenceHelper_Embedded 文件，这里直接打开 tips 还是会闪退。<br>解决方案：<br>采用上门的 file overwrite 方式替换 PersistenceHelper_Embedded 文件以后，提示 file overwrite done 时对设备进行强制重启，依次按键：音量+、音量-、长按开机键直至苹果图标出现松开，这是再打开 tips 就不再闪退了，这里直接点击 install trollstore 即可正常安装，测试功能正常。</li></ol><p>使用第一种方式安装时，强制重启是否生效，未测试，推测应该也是可以的。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="TrollStore2" scheme="https://wangqifei.eu.org/tags/TrollStore2/"/>
+    
+  </entry>
   
   <entry>
     <title>iptv直播源的获取与使用</title>
