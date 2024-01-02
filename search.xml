@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>2023</title>
+      <link href="/2024/01/02/2023/"/>
+      <url>/2024/01/02/2023/</url>
+      
+        <content type="html"><![CDATA[<h2 id="2023"><a href="#2023" class="headerlink" title="2023"></a>2023</h2><blockquote><h3 id="读过的书"><a href="#读过的书" class="headerlink" title="读过的书"></a>读过的书</h3></blockquote><ul><li>黑客与画家 (Paul Graham)</li><li>当我们不再理解世界 (Benjamin Labatut)</li><li>悉达多 (Hermann Hesse)</li><li>八次危机 (温铁军)</li><li>晚熟的人 （莫言）</li><li>饥饿的盛世 (张宏杰)</li><li>艽野尘梦 （陈渠珍）</li><li>埃隆·马斯克传 (Walter Isaacson)</li><li>克莱因壶 (冈岛二人)</li><li>乌合之众 (Gustave Le Bon)<br>搭建了 zlibot(书虫)机器人解决了图书下载的问题，又借助 epubhv(yihong0618)、Immersive Translate 实现了书籍内容的整理（横竖版排版、翻译、中英双语生成、日语注音）</li></ul><p>&lt; 在这个信息过载的当下，还是要抗得住短视频这精神毒药的铁拳。 &gt;</p><blockquote><h3 id="开过的坑"><a href="#开过的坑" class="headerlink" title="开过的坑"></a>开过的坑</h3></blockquote><ul><li>lemon</li><li>Tools</li><li>Zerphyus 频道</li><li>Zlibot</li><li></li><li>wangqifei.eu.org (需外网访问)</li><li>维护一个 Ad 列表和两台服务器</li><li>2023 年 3984 contributions</li><li>彻底解决了日常所有场景流畅、稳定的网络环境问题</li><li>很大程度上实现了各场景网络环境下的广告屏蔽</li><li>重拾编程技能的过程中不再关注技术本身转开始关注问题解决</li><li>保持个站尽可能的更新</li><li>维护一些 ios、tv 端以及 mac 端的影音脚本和模块，主要解决广告、会员以及部分增强功能(主要是翻译)需求</li></ul><p>&lt; 温故知新，旧梦重拾，又花费了很多时间开始写代码，这一年繁星闪耀式的出现很多了 AI 衍生的产品，极大的提高了效率也降低了学习成本。也认识了一些独立开发者，眼看他起高楼，眼看他宴宾客。很多产品确实很赞，重度使用中。在使用的过程中，更能领悟到 会提问比找答案更重要，聪明人的问题是答案的开始！ &gt;<br>&lt;现阶段的 AI 是智能的，直到遇到你熟悉的领域。&gt;</p><blockquote><h3 id="听过的歌"><a href="#听过的歌" class="headerlink" title="听过的歌"></a>听过的歌</h3></blockquote><p>&lt;数据来源：Spotify 账户, 其他平台数据不具备统计价值。&gt;</p><ul><li>播放 1289 首</li><li>共收听 20040 分钟</li><li>聆听 824 位艺人</li><li>最常听的艺人<ol><li>老狼</li><li>好妹妹</li><li>赵照</li><li>陈一发儿</li><li>程碧</li></ol></li><li>热听排行：<h4 id="年度歌曲"><a href="#年度歌曲" class="headerlink" title="年度歌曲"></a>年度歌曲</h4><ol><li>雨巷</li><li>凤凰花开的路口</li><li>普通人</li><li>儿时</li><li>别处的夕阳</li></ol><h4 id="年度博客"><a href="#年度博客" class="headerlink" title="年度博客"></a>年度博客</h4><ol><li>半拿铁</li><li>商业就是这样</li><li>老高与小茉</li><li>忽左忽右</li><li>人类简史</li></ol></li></ul><blockquote><h3 id="看过的影视"><a href="#看过的影视" class="headerlink" title="看过的影视"></a>看过的影视</h3></blockquote><ul><li>See</li><li>曼达洛人</li><li>Scavengers Reign</li><li>euqalizer</li><li>铁轨的尽头</li></ul><blockquote><p>2023 已经过去，我们也终将失去它，<br>但是太阳，它每时每刻都是夕阳也都是旭日，当它熄灭着走下山去收尽苍凉残照之际，正是它在另一面燃烧着爬上山巅布散朝晖之时。 – 史铁生 《我与地坛》</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 年度 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>iphone使用体验优化</title>
+      <link href="/2023/12/14/iphone%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C%E4%BC%98%E5%8C%96/"/>
+      <url>/2023/12/14/iphone%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C%E4%BC%98%E5%8C%96/</url>
+      
+        <content type="html"><![CDATA[<p>一直等待的 TrollStore2 前段时间 opa34 也终于放了出来，misaka 也保持着高频的更新，沉寂的 TrollStore 社区又开始热闹起来了。这里又有必要借着 TrollStore2 的安装汇总下 iPhone 相关的优化。</p><h2 id="TrollStore"><a href="#TrollStore" class="headerlink" title="TrollStore"></a>TrollStore</h2><ul><li>Misaka</li><li>TrollStore2</li><li>AppsManger</li><li>AppStore++</li><li>Filza</li><li>ModMyIpa</li><li>RingTonesManager</li><li>ESign</li></ul><h2 id="IPA"><a href="#IPA" class="headerlink" title="IPA"></a>IPA</h2><ul><li>Surge</li><li>Loon</li><li>ShadowRocket</li><li>Reader</li><li></li><li>KDE Connect</li><li></li><li>StormSnifer</li><li>youtube</li><li>微信</li><li></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> iphone </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>TrollStore2安装异常解决方案</title>
       <link href="/2023/12/02/TrollStore2%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
       <url>/2023/12/02/TrollStore2%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
@@ -27,7 +65,7 @@
       <link href="/2023/11/27/iptv%E7%9B%B4%E6%92%AD%E6%BA%90%E7%9A%84%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
       <url>/2023/11/27/iptv%E7%9B%B4%E6%92%AD%E6%BA%90%E7%9A%84%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
       
-        <content type="html"><![CDATA[<p>伴随着 2023 年 9 月底，广电总局要求年底之前八成以上电视用户实现开机即可看电视的要求，电视生产企业没见多大动静，类似电视家这些民间的 iptv 相关的软件纷纷倒了，继而各类时常更新维护的 iptv 直播源也陆续关闭了。<br>直到近期我一直在使用的 fanmingming 的直播源也删库了，面临着无源可用的问题，于是拨打了联通客服电话，核实了下名下的 iptv,客服告知我 iptv 业务是开通状态，但是没开机，于是就琢磨着使用起来。</p><h2 id="运营商的-IPTV"><a href="#运营商的-IPTV" class="headerlink" title="运营商的 IPTV"></a>运营商的 IPTV</h2><p>关于运营商的 iptv，我想结合为数不多的实际使用体验吐槽下：</p><ol><li>目前在用的方案是联通的网络安装人员给我配置的 iptv，竟然使用宽带中分离的 iptv，这样导致了我的宽带上不了千兆。我需要把宽带和 iptv 分离。</li><li>iptv 的盒子真的有独立存在的必要吗？联通配置的 iptv 盒子和遥控器是华为定制的，我其实需要的是把 iptv 直接接入电视就好，其实两套遥控器还是很不方便的，尤其是父母使用。使用体验基本没体验。</li></ol><h2 id="以往日常-iptv-的实现方案："><a href="#以往日常-iptv-的实现方案：" class="headerlink" title="以往日常 iptv 的实现方案："></a>以往日常 iptv 的实现方案：</h2><ul><li>找一个靠谱的直播源。<br>需要稳定、低延迟、无广告。</li><li>一些优秀的可自定义直播源的客户端。<br>操作简便、学习成本低、UI 审美在线<br> 比如：<br> android&#x2F;TV：KODI、TVBOX、电视家（优化版）\vlc<br> IOS&#x2F;Mac&#x2F;appleTV:ntPlayer、aptv、vlc<br>如今需要解决的问题是寻找一个靠谱的直播源变的不太容易了，需要自己动手抓包日常维护了。</li></ul><h2 id="这里记录下如何抓包、生成直播源及后续日常维护。"><a href="#这里记录下如何抓包、生成直播源及后续日常维护。" class="headerlink" title="这里记录下如何抓包、生成直播源及后续日常维护。"></a>这里记录下如何抓包、生成直播源及后续日常维护。</h2>]]></content>
+        <content type="html"><![CDATA[<p>伴随着 2023 年 9 月底，广电总局要求年底之前八成以上电视用户实现开机即可看电视的要求，电视生产企业没见多大动静，类似电视家这些民间的 iptv 相关的软件纷纷倒了，继而各类时常更新维护的 iptv 直播源也陆续关闭了。<br>直到近期我一直在使用的 fanmingming 的直播源也删库了，面临着无源可用的问题，于是拨打了联通客服电话，核实了下名下的 iptv,客服告知我 iptv 业务是开通状态，但是没开机，于是就琢磨着使用起来。</p><h2 id="运营商的-IPTV"><a href="#运营商的-IPTV" class="headerlink" title="运营商的 IPTV"></a>运营商的 IPTV</h2><p>关于运营商的 iptv，我想结合为数不多的实际使用体验吐槽下：</p><ol><li>目前在用的方案是联通的网络安装人员给我配置的 iptv，竟然使用宽带中分离的 iptv，这样导致了我的宽带上不了千兆。我需要把宽带和 iptv 分离。</li><li>iptv 的盒子真的有独立存在的必要吗？联通配置的 iptv 盒子和遥控器是华为定制的，我其实需要的是把 iptv 直接接入电视就好，其实两套遥控器还是很不方便的，尤其是父母使用。使用体验基本没体验。</li></ol><h2 id="以往日常-iptv-的实现方案："><a href="#以往日常-iptv-的实现方案：" class="headerlink" title="以往日常 iptv 的实现方案："></a>以往日常 iptv 的实现方案：</h2><ul><li>找一个靠谱的直播源。<br>需要稳定、低延迟、无广告。</li><li>一些优秀的可自定义直播源的客户端。<br>操作简便、学习成本低、UI 审美在线<br> 比如：<br> android&#x2F;TV：KODI、TVBOX、电视家（优化版）\vlc<br> IOS&#x2F;Mac&#x2F;appleTV:ntPlayer、aptv、vlc<br>如今需要解决的问题是寻找一个靠谱的直播源变的不太容易了，需要自己动手抓包日常维护了。</li></ul><h2 id="这里记录下如何抓包、生成直播源及后续日常维护。"><a href="#这里记录下如何抓包、生成直播源及后续日常维护。" class="headerlink" title="~~ 这里记录下如何抓包、生成直播源及后续日常维护。 ~~"></a>~~ 这里记录下如何抓包、生成直播源及后续日常维护。 ~~</h2><p>又找到一个 ipv6 的源，使用体验不输 fanmingming 就不需要再自己抓包维护了。</p>]]></content>
       
       
       
