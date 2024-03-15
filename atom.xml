@@ -6,7 +6,7 @@
   <link href="https://wangqifei.eu.org/atom.xml" rel="self"/>
   
   <link href="https://wangqifei.eu.org/"/>
-  <updated>2024-03-14T05:45:17.152Z</updated>
+  <updated>2024-03-15T02:54:03.371Z</updated>
   <id>https://wangqifei.eu.org/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ios 捷径实现自动打卡的终极解决方案</title>
+    <link href="https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2024-03-15T02:53:18.000Z</published>
+    <updated>2024-03-15T02:54:03.371Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="ios-捷径实现自动打卡"><a href="#ios-捷径实现自动打卡" class="headerlink" title="ios 捷径实现自动打卡"></a>ios 捷径实现自动打卡</h2><p>搬砖族每日打卡让人头痛，hr又不设置自动打开，于是自己需求自己动手解决，实现思路：<br>放置闲置手机作用打卡机，模拟人工打卡，避免每次打开时间都相同，打卡结果及时提醒。</p><h2 id="方案一："><a href="#方案一：" class="headerlink" title="方案一："></a>方案一：</h2><p>*** 理论可行，实测Bug *** </p><h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><ol><li>指定日期指定时间点触发打卡任务</li><li>设置一个随机数，控制在0-300s之间。避免考勤表上出现每天的打卡时间都是同一个时间！</li><li>开始打卡</li><li>将打卡结果信息发送到用手机上，避免过于依赖捷径，一旦出现bug时好手动打卡补救。</li></ol><h3 id="实现步骤："><a href="#实现步骤：" class="headerlink" title="实现步骤："></a>实现步骤：</h3><ol><li>新建捷径 check in&#x2F;out(这个就根据你的打卡app设置，比如钉钉、友空间等，可是使用软件提供的打卡捷径也可使用url scheme)</li><li>新建捷径 auto check in&#x2F;out </li><li>依次添加操作：设置随机数-格式化日期（日期：短，时间：长）-发送信息（格式化的日期：will be checked in&#x2F;out 随机数 s later）-等待（随机数）-运行 check in&#x2F;out捷径-格式化日期（日期：短，时间：长）-发送信息（格式化的日期：checked in&#x2F;out ）</li><li>在自动化里设置 指定日期 指定时间，运行捷径auto check in&#x2F;out</li></ol><h3 id="实际情况"><a href="#实际情况" class="headerlink" title="实际情况"></a>实际情况</h3><ul><li>锁屏时不能自动运行：开启自动运行，关闭锁屏密码；</li><li>运行中间停止： 所有的运行通知都要关闭；</li><li>等待运行 停止工作：捷径的bug，长时间熄屏执行 等待 操作时，偶发到会自动跳出捷径！！测试过程中，终止频发，不能很好的实现！</li></ul><h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><h3 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h3><p>** 将方案一的 等待 操作替换为 专注|驾驶|个人模式的切换 操作，从而实现延迟操作。 **</p><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol><li>新建捷径 checking in&#x2F;out <ul><li>随机数；</li><li>调整日期 加上 随机数 秒&#x2F;分钟；</li><li>打开个人模式（根据需要,选一个自己日常不常用的模式）直到 调整后的日期；</li><li>发送信息 ‘当前日期 ： checking in&#x2F;out。’ 给 ‘&lt;imessage接收号码&gt;’；<br>个人模式需要确认打开一次并完成首次设置，不然运行中会因未配置而出现中止！</li></ul></li><li>新建捷径 checked in&#x2F;out log。<ul><li>调用打卡指令（根据需要自己设置）。</li><li>发送信息 ‘当前日期 ： checked in&#x2F;out。’ 给 ‘&lt;imessage接收号码&gt;’<br>我这里统一了所有的日期格式：自定义 YY&#x2F;MM&#x2F;DD EEE Hh:mm:ss<br>小技巧：捷径中的任何操作步骤都是可以长按拖动复制到另一个捷径中的，对于一些不是常规提供的操作费用有用，比如第三方软件生成的捷径操作或者siri建议的捷径操作。</li></ul></li><li>创建个人自动化<ul><li>自动化1： 对应的打卡时间执行 checking in&#x2F;out;</li><li>自动化2： 当个人模式（需要和之前的设置对应）关闭时执行 checked in&#x2F;out;</li></ul></li></ol><p>至此，自动打开设置完成，实测方案二完美运行。  </p><p>** 这里还配置了另一个需求，只是没有生效@@ **<br>通过信息发送指定的指令比如 checknow 时，打开机执行checked in&#x2F;out log 立即打卡。<br>实测中这个不能实现自动运行，需要手动确认以后才能运行。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="捷径" scheme="https://wangqifei.eu.org/tags/%E6%8D%B7%E5%BE%84/"/>
+    
+  </entry>
   
   <entry>
     <title>基于cloudflare workers搭建vless的技术实现</title>

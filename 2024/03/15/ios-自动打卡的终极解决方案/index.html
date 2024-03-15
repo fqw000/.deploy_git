@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="ios 捷径实现自动打卡搬砖族每日打卡让人头痛，hr又不设置自动打开，于是自己需求自己动手解决，实现思路：放置闲置手机作用打卡机，模拟人工打卡，避免每次打开时间都相同，打卡结果及时提醒。 方案一：*** 理论可行，实测Bug ***  实现思路 指定日期指定时间点触发打卡任务 设置一个随机数，控制在0-300s之间。避免考勤表上出现每天的打卡时间都是同一个时间！ 开始打卡 将打卡结果信息发送到用手">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ios 捷径实现自动打卡的终极解决方案">
+<meta property="og:url" content="https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="栖 息 地">
+<meta property="og:description" content="ios 捷径实现自动打卡搬砖族每日打卡让人头痛，hr又不设置自动打开，于是自己需求自己动手解决，实现思路：放置闲置手机作用打卡机，模拟人工打卡，避免每次打开时间都相同，打卡结果及时提醒。 方案一：*** 理论可行，实测Bug ***  实现思路 指定日期指定时间点触发打卡任务 设置一个随机数，控制在0-300s之间。避免考勤表上出现每天的打卡时间都是同一个时间！ 开始打卡 将打卡结果信息发送到用手">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-15T02:53:18.000Z">
+<meta property="article:modified_time" content="2024-03-15T02:54:03.371Z">
+<meta property="article:author" content="Wangqifei">
+<meta property="article:tag" content="捷径">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico00">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>ios 捷径实现自动打卡的终极解决方案</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+      <!-- 霞鹜文楷 Regular -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Regular.css" />
+      <!-- 霞鹜文楷 Lite -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Light.css" />
+      <!-- 霞鹜文楷 Bold -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKai-Bold.css" />
+      <!-- 霞鹜文楷 Mono Regular -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Regular.css" />
+      <!-- 霞鹜文楷 Mono Lite -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Light.css" />
+      <!-- 霞鹜文楷 Mono Bold -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/satouriko/LxgwWenKai_Webfonts@v1.101/dist/LXGWWenKaiMono-Bold.css" />
+  <!--google search console验证  -->
+  <meta name="google-site-verification" content="6lVEiGTTfQ7cgd8Cjy4H3MoS59-Bspl18UX-21EvKUc" />
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="栖 息 地" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/03/14/cloudflare-workers%E6%90%AD%E5%BB%BAvless%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li> 
+  -->
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&text=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&is_video=false&description=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ios 捷径实现自动打卡的终极解决方案&body=Check out this article: https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&name=ios 捷径实现自动打卡的终极解决方案&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&t=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+ -->
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ios-%E6%8D%B7%E5%BE%84%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1"><span class="toc-number">1.</span> <span class="toc-text">ios 捷径实现自动打卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">方案一：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-number">2.1.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">实现步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E6%83%85%E5%86%B5"><span class="toc-number">2.3.</span> <span class="toc-text">实际情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="toc-number">3.</span> <span class="toc-text">方案二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">实现思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.2.</span> <span class="toc-text">实现步骤</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        ios 捷径实现自动打卡的终极解决方案
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Wangqifei</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-03-15T02:53:18.000Z" class="dt-published" itemprop="datePublished">2024-03-15</time>
+        
+        (Updated: <time datetime="2024-03-15T02:54:03.371Z" class="dt-updated" itemprop="dateModified">2024-03-15</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%8D%B7%E5%BE%84/" rel="tag">捷径</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="ios-捷径实现自动打卡"><a href="#ios-捷径实现自动打卡" class="headerlink" title="ios 捷径实现自动打卡"></a>ios 捷径实现自动打卡</h2><p>搬砖族每日打卡让人头痛，hr又不设置自动打开，于是自己需求自己动手解决，实现思路：<br>放置闲置手机作用打卡机，模拟人工打卡，避免每次打开时间都相同，打卡结果及时提醒。</p>
+<h2 id="方案一："><a href="#方案一：" class="headerlink" title="方案一："></a>方案一：</h2><p>*** 理论可行，实测Bug *** </p>
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><ol>
+<li>指定日期指定时间点触发打卡任务</li>
+<li>设置一个随机数，控制在0-300s之间。避免考勤表上出现每天的打卡时间都是同一个时间！</li>
+<li>开始打卡</li>
+<li>将打卡结果信息发送到用手机上，避免过于依赖捷径，一旦出现bug时好手动打卡补救。</li>
+</ol>
+<h3 id="实现步骤："><a href="#实现步骤：" class="headerlink" title="实现步骤："></a>实现步骤：</h3><ol>
+<li>新建捷径 check in&#x2F;out(这个就根据你的打卡app设置，比如钉钉、友空间等，可是使用软件提供的打卡捷径也可使用url scheme)</li>
+<li>新建捷径 auto check in&#x2F;out </li>
+<li>依次添加操作：设置随机数-格式化日期（日期：短，时间：长）-发送信息（格式化的日期：will be checked in&#x2F;out 随机数 s later）-等待（随机数）-运行 check in&#x2F;out捷径-格式化日期（日期：短，时间：长）-发送信息（格式化的日期：checked in&#x2F;out ）</li>
+<li>在自动化里设置 指定日期 指定时间，运行捷径auto check in&#x2F;out</li>
+</ol>
+<h3 id="实际情况"><a href="#实际情况" class="headerlink" title="实际情况"></a>实际情况</h3><ul>
+<li>锁屏时不能自动运行：开启自动运行，关闭锁屏密码；</li>
+<li>运行中间停止： 所有的运行通知都要关闭；</li>
+<li>等待运行 停止工作：捷径的bug，长时间熄屏执行 等待 操作时，偶发到会自动跳出捷径！！测试过程中，终止频发，不能很好的实现！</li>
+</ul>
+<h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><h3 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h3><p>** 将方案一的 等待 操作替换为 专注|驾驶|个人模式的切换 操作，从而实现延迟操作。 **</p>
+<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
+<li>新建捷径 checking in&#x2F;out <ul>
+<li>随机数；</li>
+<li>调整日期 加上 随机数 秒&#x2F;分钟；</li>
+<li>打开个人模式（根据需要,选一个自己日常不常用的模式）直到 调整后的日期；</li>
+<li>发送信息 ‘当前日期 ： checking in&#x2F;out。’ 给 ‘&lt;imessage接收号码&gt;’；<br>个人模式需要确认打开一次并完成首次设置，不然运行中会因未配置而出现中止！</li>
+</ul>
+</li>
+<li>新建捷径 checked in&#x2F;out log。<ul>
+<li>调用打卡指令（根据需要自己设置）。</li>
+<li>发送信息 ‘当前日期 ： checked in&#x2F;out。’ 给 ‘&lt;imessage接收号码&gt;’<br>我这里统一了所有的日期格式：自定义 YY&#x2F;MM&#x2F;DD EEE Hh:mm:ss<br>小技巧：捷径中的任何操作步骤都是可以长按拖动复制到另一个捷径中的，对于一些不是常规提供的操作费用有用，比如第三方软件生成的捷径操作或者siri建议的捷径操作。</li>
+</ul>
+</li>
+<li>创建个人自动化<ul>
+<li>自动化1： 对应的打卡时间执行 checking in&#x2F;out;</li>
+<li>自动化2： 当个人模式（需要和之前的设置对应）关闭时执行 checked in&#x2F;out;</li>
+</ul>
+</li>
+</ol>
+<p>至此，自动打开设置完成，实测方案二完美运行。  </p>
+<p>** 这里还配置了另一个需求，只是没有生效@@ **<br>通过信息发送指定的指令比如 checknow 时，打开机执行checked in&#x2F;out log 立即打卡。<br>实测中这个不能实现自动运行，需要手动确认以后才能运行。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ios-%E6%8D%B7%E5%BE%84%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1"><span class="toc-number">1.</span> <span class="toc-text">ios 捷径实现自动打卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">方案一：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-number">2.1.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">实现步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E6%83%85%E5%86%B5"><span class="toc-number">2.3.</span> <span class="toc-text">实际情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="toc-number">3.</span> <span class="toc-text">方案二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">实现思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.2.</span> <span class="toc-text">实现步骤</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li> 
+  -->
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&text=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <!-- 
+    <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&is_video=false&description=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ios 捷径实现自动打卡的终极解决方案&body=Check out this article: https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&title=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&name=ios 捷径实现自动打卡的终极解决方案&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://wangqifei.eu.org/2024/03/15/ios-%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/&t=ios 捷径实现自动打卡的终极解决方案"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+ -->
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <!-- 
+          <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a> 
+        -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023-2024
+    Wangqifei
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     -->
+     <li><a target="_blank" rel="noopener" href="https://evolution-host.com/" alt="evolution-host vps">evolution host</li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
