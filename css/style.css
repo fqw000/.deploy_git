@@ -192,7 +192,9 @@ body {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.04);
     min-height: 100vh;
 }
-
+p:not(.post-title):not(.post-meta):not(.post-abstract) {
+    text-indent: 2em;
+}
 .container {
     background-color: transparent;
     padding: 0;
