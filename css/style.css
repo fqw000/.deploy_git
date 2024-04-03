@@ -158,7 +158,8 @@ html {
 }
 
 h1 {
-    font-size: 2.2em
+    font-size: 2.2em;
+    text-align: center;
 }
 
 h2 {
@@ -488,8 +489,18 @@ li {
 }
 
 figure {
-    overflow: scroll
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
 }
+figure::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: transparent;
+  }
+
+figure::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
 
 figure>table {
     width: 100%
