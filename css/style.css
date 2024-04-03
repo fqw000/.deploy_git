@@ -421,7 +421,7 @@ a:focus {
 }
 
 .soc a {
-    border-bottom: solid transparent 2px
+    border-bottom: solid transparent 2px;
 }
 
 .soc a:hover {
@@ -644,6 +644,9 @@ figure .code pre {
     a {
         padding: 0
     }
+    .soc a {
+        margin: 0 0.5em;
+    }
 
     .post-title {
         font-size: 20px;
@@ -706,7 +709,9 @@ figure .code pre {
         padding-bottom: 60px
     }
 }
-
+    .soc a {
+        margin: 0 0.5em;
+    }
 @media only screen and (max-height: 600px) {
     body {
         line-height: normal
@@ -838,7 +843,8 @@ figure .code pre {
     }
 
     .soc {
-        display: block !important
+        display: block !important;
+        margin: 0 0.5em;
     }
 
     .site-nav-footer {
