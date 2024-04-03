@@ -162,11 +162,11 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5em
+    font-size: 1.3em
 }
 
 h3 {
-    font-size: 1.3em
+    font-size: 1.2em
 }
 
 h4 {
@@ -192,7 +192,10 @@ body {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.04);
     min-height: 100vh;
 }
-p:not(.post-title):not(.post-meta):not(.post-abstract) {
+p {
+    text-align: justify;
+}
+p:not(.post-title):not(.post-meta):not(.post-abstract) p.span {
     text-indent: 2em;
 }
 .container {
